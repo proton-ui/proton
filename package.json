@@ -1,0 +1,25 @@
+{
+  "name": "kite",
+  "version": "0.0.1",
+  "description": "An elegant Vue.js Tailwind component library",
+  "main": "dist/kite.js",
+  "repository": "git@github.com:efellemedia/kite.git",
+  "author": "efelle creative <hello@efelle.com>",
+  "contributors": [
+    "Shea Lewis <shea@efelle.com>",
+    "Jeff Yeon <jeff@efelle.com>",
+    "Manda Eldreth <manda@efelle.com>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "dependencies": {
+    "laravel-mix": "^2.1.11",
+    "tailwindcss": "^0.6.1",
+    "vue": "^2.5.16"
+  }
+}
