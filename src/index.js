@@ -10,4 +10,8 @@ const Kite = {
     }
 }
 
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Kite)
+}
+
 export default Kite
