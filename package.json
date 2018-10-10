@@ -1,25 +1,26 @@
 {
-  "name": "kite",
+  "name": "proton",
   "version": "0.0.1",
   "description": "An elegant Vue.js Tailwind component library",
-  "main": "dist/kite.js",
-  "repository": "git@github.com:efellemedia/kite.git",
+  "main": "dist/protoon.js",
+  "repository": "git@github.com:efellemedia/proton.git",
   "author": "efelle creative <hello@efelle.com>",
-  "contributors": [
-    "Shea Lewis <shea@efelle.com>",
-    "Jeff Yeon <jeff@efelle.com>",
-    "Manda Eldreth <manda@efelle.com>"
-  ],
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "laravel-mix": "^2.1.11",
     "tailwindcss": "^0.6.1",
     "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "vuepress": "^0.14.4",
+    "webpack": "^3.1.2"
   }
 }

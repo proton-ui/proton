@@ -1,17 +1,27 @@
-import Vue from 'vue'
+const components = require.context('./components', true, /[a-z0-9]+\.vue$/)
 
-const Kite = {
+const Proton = {
     install(Vue) {
-        Vue.mixin({
-            mounted() {
-                console.log('Mounted from Kite!')
-            }
+        const nameReg = /([a-z0-9]+)\./i
+
+        components.keys().forEach(key => {
+            const name = key.match(nameReg)[1]
+            Vue.component(name, components(key))
         })
     }
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Kite)
+// Auto-install plugin
+let GlobalVue = null
+
+if (typeof window !== 'undefined') {
+    GlobalVue = window.Vue
+} else if (typeof global !== 'undefined') {
+    GlobalVue = global.vue
 }
 
-export default Kite
+if (GlobalVue) {
+    GlobalVue.use(Proton)
+}
+
+export default Proton

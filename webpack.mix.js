@@ -11,4 +11,4 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('src/index.js', 'dist/kite.js');
+mix.js('src/index.js', 'dist/proton.js');
