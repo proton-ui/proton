@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://proton.efelle.co" target="_blank">
+    <a href="https://proton.efelle.co" width="280" target="_blank">
         <img src="/docs/.vuepress/public/hero.png?raw=true" alt="logo">
     </a>
 </p>
