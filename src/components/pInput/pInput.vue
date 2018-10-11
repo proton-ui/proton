@@ -29,7 +29,7 @@
 
 <script>
     export default {
-        name: 'proton-input',
+        name: 'p-input',
 
         props: {
             name: String,

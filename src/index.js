@@ -1,12 +1,11 @@
-const components = require.context('./components', true, /[a-z0-9]+\.vue$/)
+import * as pComponents from './components'
 
 const Proton = {
     install(Vue) {
         const nameReg = /([a-z0-9]+)\./i
 
-        components.keys().forEach(key => {
-            const name = key.match(nameReg)[1]
-            Vue.component(name, components(key))
+        Object.values(pComponents).forEach((pComponent) => {
+            Vue.use(pComponent)
         })
     }
 }

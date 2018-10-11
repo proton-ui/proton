@@ -1,8 +1,8 @@
 {
-  "name": "proton",
+  "name": "@efelle/proton",
   "version": "0.0.1",
   "description": "An elegant Vue.js Tailwind component library",
-  "main": "dist/protoon.js",
+  "main": "dist/proton.js",
   "repository": "git@github.com:efellemedia/proton.git",
   "author": "efelle creative <hello@efelle.com>",
   "license": "MIT",
