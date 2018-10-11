@@ -5,4 +5,4 @@
 </p>
 
 # Proton UI
-> An Elegant Vue.js Tailwind Component Library
+> An Elegant Vue.js Component Library

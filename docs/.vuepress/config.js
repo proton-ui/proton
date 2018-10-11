@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Proton UI',
-    description: 'An Elegant Vue.js Tailwind Component Library',
+    description: 'An Elegant Vue.js Component Library',
 
     themeConfig: {
         repo: 'efellemedia/proton',
