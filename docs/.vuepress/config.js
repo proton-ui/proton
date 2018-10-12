@@ -18,7 +18,8 @@ module.exports = {
                 title: 'Development',
                 collapsable: false,
                 children: [
-                    '/guide/'
+                    '/guide/',
+                    '/guide/contributing',
                 ],
             },
 
@@ -26,7 +27,7 @@ module.exports = {
                 title: 'Components',
                 collapsable: false,
                 children: [
-                    '/guide/input'
+                    '/guide/input',
                 ],
             },
         ],
