@@ -8,18 +8,18 @@ Proton UI is in active development and has not reached a stable release just yet
 ## Completed Components
 - Button
 - Card
+- Charts
+    - [Frappe Charts](https://frappe.io/charts)
 - Input
 
 ## Planned Components
 - Alert
-- Charts
-    - [Apex Charts](https://apexcharts.com)
 - Checkbox
 - Chip
 - DataTable
 - Dropdown
 - List
-    - [Draggable](https://shopify.github.io/draggable/)
+    - [Draggable](https://shopify.github.io/draggable)
 - Modal
 - Number
 - Radio
@@ -30,5 +30,5 @@ Proton UI is in active development and has not reached a stable release just yet
 - Tooltip
 - WYSIWYG
     - Ability to configure which WYSIWYG editor to use:
-    - [Redactor](https://imperavi.com/redactor/)
-    - [Quill](https://quilljs.com/)
+    - [Redactor](https://imperavi.com/redactor)
+    - [Quill](https://quilljs.com)
