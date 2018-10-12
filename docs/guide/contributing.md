@@ -20,4 +20,6 @@ To easily test and use the package locally, make use of Yarn's [link](https://ya
 _Coming Soon_
 
 ## Documentation
-_Coming Soon_
+Documentation is bundled along side the source code within the `docs/` directory. Pages are written in markdown and rendered through the use of [VuePress](https://vuepress.vuejs.org/). You can start writing and contributing to the documentation locally by running the `yarn docs:dev` command. This will spin up a server instance and start watching and compiling any newly added or modified markdown file.
+
+When you're happy with your work and are ready to send a pull request, close your server and compile the documentation for production by running `yarn docs:build`. This will generate the static files used in production.

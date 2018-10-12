@@ -4,6 +4,7 @@ module.exports = {
 
     themeConfig: {
         repo: 'efellemedia/proton',
+        docsDir: 'docs',
         editLinks: true,
         editLinkText: 'Help us improve this page!',
         lastUpdated: 'Last Updated',
