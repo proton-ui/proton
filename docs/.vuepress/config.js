@@ -20,6 +20,7 @@ module.exports = {
                 children: [
                     '/guide/',
                     '/guide/contributing',
+                    '/guide/roadmap',
                 ],
             },
 
