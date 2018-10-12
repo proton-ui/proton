@@ -15,6 +15,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "frappe-charts": "^1.1.0",
     "laravel-mix": "^2.1.11",
     "tailwindcss": "^0.6.1",
     "vue": "^2.5.16"

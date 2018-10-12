@@ -5,17 +5,19 @@ title: Roadmap
 # Roadmap
 Proton UI is in active development and has not reached a stable release just yet. Below you will find the planned components to be covered by the initial v1.0 release.
 
-## Planned Components
-- Alert
+## Completed Components
 - Button
 - Card
+- Input
+
+## Planned Components
+- Alert
 - Charts
     - [Apex Charts](https://apexcharts.com)
 - Checkbox
 - Chip
 - DataTable
 - Dropdown
-- Input
 - List
     - [Draggable](https://shopify.github.io/draggable/)
 - Modal

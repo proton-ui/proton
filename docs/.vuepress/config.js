@@ -12,6 +12,15 @@ module.exports = {
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Guide', link: '/guide/' },
+            {
+                text: 'Components',
+                items: [
+                    { text: 'Button', link: '/guide/components/button' },
+                    { text: 'Card', link: '/guide/components/card' },
+                    { text: 'Chart', link: '/guide/components/chart' },
+                    { text: 'Input', link: '/guide/components/input' },
+                ]
+            }
         ],
 
         sidebar: [
@@ -29,7 +38,10 @@ module.exports = {
                 title: 'Components',
                 collapsable: false,
                 children: [
-                    '/guide/input',
+                    '/guide/components/button',
+                    '/guide/components/card',
+                    '/guide/components/chart',
+                    '/guide/components/input',
                 ],
             },
         ],

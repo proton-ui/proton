@@ -30,7 +30,7 @@ Add help text below the input with the `help` property.
 <p-input name="full_name" help="Please put in your full name."></p-input>
 ```
 
-## API
+## Props
 | Name | Type | Description | Options | Default |
 |------|------|-------------|---------|---------|
 | `v-model` | `Bind` | | | |
