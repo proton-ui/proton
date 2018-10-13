@@ -723,7 +723,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         countLabel: {
             required: false,
             type: String,
-            deefault: 'Count'
+            default: 'Count'
         },
 
         title: {

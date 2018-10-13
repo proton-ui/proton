@@ -64,7 +64,7 @@
             countLabel: {
                 required: false,
                 type: String,
-                deefault: 'Count',
+                default: 'Count',
             },
 
             title: {
