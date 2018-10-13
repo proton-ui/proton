@@ -253,8 +253,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pCard", function() { return __WEBPACK_IMPORTED_MODULE_1__pCard__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pChart__ = __webpack_require__(13);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pChart", function() { return __WEBPACK_IMPORTED_MODULE_2__pChart__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pInput__ = __webpack_require__(18);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pInput", function() { return __WEBPACK_IMPORTED_MODULE_3__pInput__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pDatatable__ = __webpack_require__(23);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pDatatable", function() { return __WEBPACK_IMPORTED_MODULE_3__pDatatable__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pInput__ = __webpack_require__(18);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pInput", function() { return __WEBPACK_IMPORTED_MODULE_4__pInput__["a"]; });
+
 
 
 
@@ -1134,6 +1137,143 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-516ec04f", module.exports)
+  }
+}
+
+/***/ }),
+/* 22 */,
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pDatatable__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pDatatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pDatatable__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
+    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pDatatable___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pDatatable___default.a);
+});
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(25)
+/* template */
+var __vue_template__ = __webpack_require__(26)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/pDatatable/pDatatable.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a73918f", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a73918f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'p-datatable',
+
+    data: function data() {
+        return {};
+    },
+    mounted: function mounted() {
+        this.getRecords();
+    },
+
+
+    methods: {
+        getRecords: function getRecords() {
+            //
+        }
+    }
+});
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("table", [
+        _c("thead", [_c("tr", [_c("th", [_vm._v("Column")])])]),
+        _vm._v(" "),
+        _c("tbody", [_c("tr", [_c("td", [_vm._v("Value")])])])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6a73918f", module.exports)
   }
 }
 
