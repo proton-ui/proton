@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card__body">
-            <h1 v-if="title">{{ title }}</h1>
+            <h2 v-if="title">{{ title }}</h2>
 
             <form action="#" @submit.prevent="getRecords">
                 <label for="column" class="form__label">Filter</label>
