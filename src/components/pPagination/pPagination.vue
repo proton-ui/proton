@@ -134,8 +134,6 @@
                     })
                 }
 
-                console.log(range, this.startPage, this.endPage)
-
                 return range
             },
 

@@ -4,12 +4,12 @@
             <h1 v-if="title">{{ title }}</h1>
 
             <form action="#" @submit.prevent="getRecords">
-                <label for="search_column" class="form__label">Search</label>
+                <label for="column" class="form__label">Filter</label>
 
                 <div class="row" style="margin-bottom: 0;">
                     <div class="col sm:w-1/4">
                         <div class="relative">
-                            <select name="search_column" class="form__control" v-model="search.column">
+                            <select name="column" class="form__control" v-model="filter.column">
                                 <option
                                     v-for="option in displayable"
                                     :key="option"
@@ -27,8 +27,13 @@
 
                     <div class="col sm:w-1/4">
                         <div class="relative">
-                            <select name="search_sign" class="form__control" v-model="search.operator">
-                                <option value="equals">=</option>
+                            <select name="operator" class="form__control" v-model="filter.operator">
+                                <option value="equals">equals</option>
+                                <option value="contains">contains</option>
+                                <option value="starts_with">starts with</option>
+                                <option value="ends_with">ends with</option>
+                                <option value="greater_than">greater than</option>
+                                <option value="lesser_than">lesser than</option>
                             </select>
 
                             <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -39,10 +44,10 @@
 
                     <div class="col sm:w-1/2">
                         <div class="input__group">
-                            <input type="text" class="form__control" name="search_query" v-model="search.value">
+                            <input type="text" class="form__control" name="value" v-model="filter.value">
 
                             <div class="input__group--append">
-                                <p-button type="submit">Search</p-button>
+                                <p-button type="submit">Submit</p-button>
                             </div>
                         </div>
                     </div>
@@ -52,9 +57,9 @@
             <div class="row" style="margin-bottom: 0;">
                 <div class="col sm:w-5/6">
                     <p-input
-                        name="quick_search"
-                        label="Quick search current results"
-                        v-model="quickSearch"
+                        name="search"
+                        label="Search"
+                        v-model="search"
                     ></p-input>
                 </div>
 
@@ -63,7 +68,6 @@
 
                     <div class="relative">
                         <select name="limit" class="form__control" v-model="pagination.perPage" @change="changeLimit">
-                            <option :value="1">1</option>
                             <option :value="5">5</option>
                             <option :value="10">10</option>
                             <option :value="25">25</option>
@@ -107,7 +111,11 @@
                             {{ columnValue }}
                         </slot>
                     </td>
-                    <td>-</td>
+                    <td class="text-right">
+                        <slot name="actions" :record="record">
+                            <a href="#" class="text-danger hover:text-danger-dark" @click.prevent="destroy(record.id)">Delete</a>
+                        </slot>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -135,10 +143,11 @@
         data() {
             return {
                 loading: true,
-
                 displayable: [],
                 column_names: [],
                 records: [],
+                search: '',
+
                 pagination: {
                     totalRecords: 0,
                     currentPage: 1,
@@ -146,11 +155,9 @@
                     perPage: 5,
                 },
 
-                quickSearch: '',
-
-                search: {
+                filter: {
                     column: this.sortBy,
-                    operator: '=',
+                    operator: 'equals',
                     value: '',
                 },
 
@@ -195,13 +202,11 @@
                 this.loading = true
 
                 return axios.get(`${this.endpoint}?${this.getQueryParameters()}`).then((response) => {
-                    console.log(response)
-
-                    this.records = response.data.data.records.data
-                    this.displayable = response.data.data.displayable
-                    this.column_names = response.data.data.column_names
-                    this.pagination.totalRecords = response.data.data.records.total
-                    this.pagination.totalPages = response.data.data.records.last_page
+                    this.records = response.data.records.data
+                    this.displayable = response.data.displayable
+                    this.column_names = response.data.column_names
+                    this.pagination.totalRecords = response.data.records.total
+                    this.pagination.totalPages = response.data.records.last_page
 
                     this.loading = false
                 })
@@ -213,6 +218,9 @@
                     page: this.pagination.currentPage,
                     orderBy: this.sort.key,
                     orderDirection: this.sort.order,
+                    column: this.filter.column,
+                    operator: this.filter.operator,
+                    value: this.filter.value,
                 })
             },
 
@@ -233,7 +241,13 @@
                 this.pagination.currentPage = 1
 
                 this.getRecords()
-            }
+            },
+
+            destroy(id) {
+                axios.delete(`${this.endpoint}/${id}`).then(() => {
+                    this.getRecords()
+                })
+            },
         }
     }
 </script>
