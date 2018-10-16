@@ -1,8 +1,10 @@
 import * as pComponents from './components'
 
+const moment = require('moment')
+
 const Proton = {
     install(Vue) {
-        const nameReg = /([a-z0-9]+)\./i
+        Vue.prototype.moment = moment
 
         Object.values(pComponents).forEach((pComponent) => {
             Vue.use(pComponent)

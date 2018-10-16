@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3">
+    <div>
         <label
             class="form__label"
             :for="name"
@@ -11,6 +11,7 @@
             class="form__control"
             :class="{'font-mono': monospaced}"
             :id="name"
+            :name="name"
             :type="type"
             :placeholder="placeholder"
             :readonly="readonly"
