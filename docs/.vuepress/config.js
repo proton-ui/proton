@@ -19,6 +19,7 @@ module.exports = {
                     { text: 'Card', link: '/guide/components/card' },
                     { text: 'Chart', link: '/guide/components/chart' },
                     { text: 'Input', link: '/guide/components/input' },
+                    { text: 'Toggle', link: '/guide/components/toggle' },
                 ]
             }
         ],
@@ -42,6 +43,7 @@ module.exports = {
                     '/guide/components/card',
                     '/guide/components/chart',
                     '/guide/components/input',
+                    '/guide/components/toggle',
                 ],
             },
         ],
