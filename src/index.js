@@ -1,4 +1,5 @@
-import * as pComponents from './components'
+import * as Components from './components'
+import * as Directives from './directives'
 
 const moment = require('moment')
 
@@ -6,8 +7,12 @@ const Proton = {
     install(Vue) {
         Vue.prototype.moment = moment
 
-        Object.values(pComponents).forEach((pComponent) => {
-            Vue.use(pComponent)
+        Object.values(Components).forEach((Component) => {
+            Vue.use(Component)
+        })
+
+        Object.values(Directives).forEach((Directive) => {
+            Vue.use(Directive)
         })
     }
 }

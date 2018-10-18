@@ -13,11 +13,11 @@
             :id="name"
             :name="name"
             :value="value"
-            :checked.prop="isChecked"
+            :checked="isChecked"
             :readonly="readonly"
             :disabled="disabled"
             :required="required"
-            @keydown.prevent.space="toggle"
+            @keydown.space="toggle"
             @click="toggle"
         >
 
@@ -77,9 +77,9 @@
 
         methods: {
             toggle() {
-                this.checked = ! this.checked
+                this.isChecked = ! this.isChecked
 
-                this.$emit("input", this.checked)
+                this.$emit("input", this.isChecked)
             }
         }
     }

@@ -4,7 +4,7 @@
         :class="[ themes[theme], sizes[size] ]"
         :type="type"
         :disabled="disabled"
-        @click.native="$emit('click', $event)"
+        @click="$emit('click', $event)"
     >
         <slot></slot>
     </button>
@@ -69,12 +69,6 @@
                 type: Boolean,
                 default: false,
             },
-        },
-
-        computed: {
-            variant() {
-                //
-            }
         },
     }
 </script>
