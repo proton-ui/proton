@@ -37795,6 +37795,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             required: false,
             type: Boolean,
             default: false
+        },
+
+        noHeader: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+
+        noFooter: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+
+        noEscClose: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+
+        noOutsideClose: {
+            required: false,
+            type: Boolean,
+            default: false
         }
     },
 
@@ -37829,11 +37853,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             };
 
-            document.addEventListener('keydown', escapeHandler);
+            if (!this.noEscClose) {
+                document.addEventListener('keydown', escapeHandler);
 
-            this.$once('hook:destroyed', function () {
-                document.removeEventListener('keydown', escapeHandler);
-            });
+                this.$once('hook:destroyed', function () {
+                    document.removeEventListener('keydown', escapeHandler);
+                });
+            }
         },
         listenForDirective: function listenForDirective() {
             var _this3 = this;
@@ -37841,6 +37867,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_1__support_eventbus__["a" /* default */].$on('toggle-modal-' + this.name, function () {
                 _this3.toggle();
             });
+        },
+        clickedOutside: function clickedOutside() {
+            if (!this.noOutsideClose) {
+                this.dismiss();
+            }
         }
     },
 
@@ -49109,8 +49140,8 @@ var render = function() {
               {
                 name: "click-outside",
                 rawName: "v-click-outside",
-                value: _vm.dismiss,
-                expression: "dismiss"
+                value: _vm.clickedOutside,
+                expression: "clickedOutside"
               }
             ],
             staticClass: "modal",
@@ -49120,60 +49151,64 @@ var render = function() {
             }
           },
           [
-            _c(
-              "div",
-              { staticClass: "modal__header" },
-              [
-                _vm._t("header", [
-                  _c("div", { staticClass: "modal__header--title" }, [
-                    _vm.title
-                      ? _c("span", [_vm._v(_vm._s(_vm.title))])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    !_vm.noCloseButton
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "modal__header--close-button",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.dismiss($event)
-                              }
-                            }
-                          },
-                          [_vm._v("×")]
-                        )
-                      : _vm._e()
-                  ])
-                ])
-              ],
-              2
-            ),
+            !_vm.noHeader
+              ? _c(
+                  "div",
+                  { staticClass: "modal__header" },
+                  [
+                    _vm._t("header", [
+                      _c("div", { staticClass: "modal__header--title" }, [
+                        _vm.title
+                          ? _c("span", [_vm._v(_vm._s(_vm.title))])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        !_vm.noCloseButton
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "modal__header--close-button",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.dismiss($event)
+                                  }
+                                }
+                              },
+                              [_vm._v("×")]
+                            )
+                          : _vm._e()
+                      ])
+                    ])
+                  ],
+                  2
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c("div", { staticClass: "modal__body" }, [_vm._t("default")], 2),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal__footer" },
-              [
-                _vm._t("footer", [
-                  _c(
-                    "div",
-                    [
-                      _c("p-button", { on: { click: _vm.dismiss } }, [
-                        _vm._v("Close")
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              ],
-              2
-            )
+            !_vm.noFooter
+              ? _c(
+                  "div",
+                  { staticClass: "modal__footer" },
+                  [
+                    _vm._t("footer", [
+                      _c(
+                        "div",
+                        [
+                          _c("p-button", { on: { click: _vm.dismiss } }, [
+                            _vm._v("Close")
+                          ])
+                        ],
+                        1
+                      )
+                    ])
+                  ],
+                  2
+                )
+              : _vm._e()
           ]
         )
       ])

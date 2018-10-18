@@ -1,7 +1,7 @@
 <template>
     <div class="modal--overlay" v-if="shouldShow">
-        <div class="modal" :class="{'modal--large': large, 'modal--x-large': extraLarge}" v-click-outside="dismiss">
-            <div class="modal__header">
+        <div class="modal" :class="{'modal--large': large, 'modal--x-large': extraLarge}" v-click-outside="clickedOutside">
+            <div class="modal__header" v-if="! noHeader">
                 <slot name="header">
                     <div class="modal__header--title" >
                         <span v-if="title">{{ title }}</span>
@@ -17,7 +17,7 @@
                 <slot></slot>
             </div>
 
-            <div class="modal__footer">
+            <div class="modal__footer" v-if="! noFooter">
                 <slot name="footer">
                     <div>
                         <p-button @click="dismiss">Close</p-button>
@@ -76,6 +76,30 @@
                 type: Boolean,
                 default: false,
             },
+
+            noHeader: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noFooter: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noEscClose: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noOutsideClose: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
         },
 
         methods: {
@@ -107,18 +131,26 @@
                     }
                 }
 
-                document.addEventListener('keydown', escapeHandler)
+                if (! this.noEscClose) {
+                    document.addEventListener('keydown', escapeHandler)
 
-                this.$once('hook:destroyed', () => {
-                    document.removeEventListener('keydown', escapeHandler)
-                })
+                    this.$once('hook:destroyed', () => {
+                        document.removeEventListener('keydown', escapeHandler)
+                    })
+                }
             },
 
             listenForDirective() {
                 EventBus.$on('toggle-modal-' + this.name, () => {
                     this.toggle()
                 })
-            }
+            },
+
+            clickedOutside() {
+                if (! this.noOutsideClose) {
+                    this.dismiss()
+                }
+            },
         },
 
         watch: {

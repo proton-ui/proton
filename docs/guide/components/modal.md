@@ -57,7 +57,11 @@ To toggle the visibility of a modal instance, we recommend using the `v-modal` d
 | `show` | `Boolean` | Set the initial visibility state of the modal. | true, false | false |
 | `large` | `Boolean` | If the modal should be large in size. | true, false | false |
 | `extra-large` | `Boolean` | If the modal should be extra large in size. | true, false | false |
+| `no-header` | `Boolean` | Disable the modal header section completely. | true, false | false |
+| `no-footer` | `Boolean` | Disable the modal footer section completely. | true, false | false |
 | `no-close-button` | `Boolean` | Disable the close button in the header of the modal. | true, false | false |
+| `no-esc-close` | `Boolean` | Disable the ability to dismiss the modal with the `esc` key. | true, false | false |
+| `no-outside-close` | `Boolean` | Disable the ability to dismiss the modal by clicking outside of it. | true, false | false |
 
 ## Slots
 | Name | Description |
