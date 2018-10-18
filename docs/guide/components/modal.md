@@ -58,3 +58,10 @@ To toggle the visibility of a modal instance, we recommend using the `v-modal` d
 | `large` | `Boolean` | If the modal should be large in size. | true, false | false |
 | `extra-large` | `Boolean` | If the modal should be extra large in size. | true, false | false |
 | `no-close-button` | `Boolean` | Disable the close button in the header of the modal. | true, false | false |
+
+## Slots
+| Name | Description |
+|------|-------------|
+| `default` | Main body of the modal. |
+| `header` | Header section of the modal. |
+| `footer` | Footer section of the modal. |
