@@ -7,7 +7,7 @@
             v-html="label">
         </label>
 
-        <input
+        <textarea
             class="form__control"
             :class="{'font-mono': monospaced}"
             :id="name"
@@ -17,20 +17,21 @@
             :readonly="readonly"
             :disabled="disabled"
             :value="value"
+            :rows="rows"
             @input="$emit('input', $event.target.value)"
-        >
+        ></textarea>
 
-        <div class="form__control--meta">
-            <div class="form__help">
-                <span v-if="help" v-html="help"></span>
-            </div>
-        </div>
+        <p
+            class="form__help"
+            v-if="help"
+            v-html="help"
+        ></p>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'p-input',
+        name: 'p-textarea',
 
         props: {
             name: String,
@@ -40,10 +41,6 @@
             value: {
                 type: [String, Number],
                 default: '',
-            },
-            type: {
-                type: String,
-                default: 'text',
             },
             required: {
                 type: Boolean,
@@ -61,6 +58,11 @@
                 type: Boolean,
                 default: false,
             },
-        },
+            rows: {
+                required: false,
+                type: Number,
+                default: 3,
+            },
+        }
     }
 </script>

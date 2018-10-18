@@ -34655,10 +34655,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pModal", function() { return __WEBPACK_IMPORTED_MODULE_5__pModal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pPagination__ = __webpack_require__(190);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pPagination", function() { return __WEBPACK_IMPORTED_MODULE_6__pPagination__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pSelect__ = __webpack_require__(194);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pSelect", function() { return __WEBPACK_IMPORTED_MODULE_7__pSelect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pToggle__ = __webpack_require__(198);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pToggle", function() { return __WEBPACK_IMPORTED_MODULE_8__pToggle__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pPassword__ = __webpack_require__(212);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pPassword", function() { return __WEBPACK_IMPORTED_MODULE_7__pPassword__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pSelect__ = __webpack_require__(194);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pSelect", function() { return __WEBPACK_IMPORTED_MODULE_8__pSelect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pTextarea__ = __webpack_require__(208);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pTextarea", function() { return __WEBPACK_IMPORTED_MODULE_9__pTextarea__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pToggle__ = __webpack_require__(198);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pToggle", function() { return __WEBPACK_IMPORTED_MODULE_10__pToggle__["a"]; });
+
+
 
 
 
@@ -37630,12 +37636,13 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _vm.help
-      ? _c("p", {
-          staticClass: "form__help",
-          domProps: { innerHTML: _vm._s(_vm.help) }
-        })
-      : _vm._e()
+    _c("div", { staticClass: "form__control--meta" }, [
+      _c("div", { staticClass: "form__help" }, [
+        _vm.help
+          ? _c("span", { domProps: { innerHTML: _vm._s(_vm.help) } })
+          : _vm._e()
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -50408,6 +50415,426 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 207;
+
+/***/ }),
+/* 208 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pTextarea__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pTextarea___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pTextarea__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
+    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pTextarea___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pTextarea___default.a);
+});
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(210)
+/* template */
+var __vue_template__ = __webpack_require__(211)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/pTextarea/pTextarea.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-78cd7b65", Component.options)
+  } else {
+    hotAPI.reload("data-v-78cd7b65", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'p-textarea',
+
+    props: {
+        name: String,
+        placeholder: String,
+        label: String,
+        help: String,
+        value: {
+            type: [String, Number],
+            default: ''
+        },
+        required: {
+            type: Boolean,
+            default: false
+        },
+        readonly: {
+            type: Boolean,
+            default: false
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        monospaced: {
+            type: Boolean,
+            default: false
+        },
+        rows: {
+            required: false,
+            type: Number,
+            default: 3
+        }
+    }
+});
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.label
+      ? _c("label", {
+          staticClass: "form__label",
+          attrs: { for: _vm.name },
+          domProps: { innerHTML: _vm._s(_vm.label) }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _c("textarea", {
+      staticClass: "form__control",
+      class: { "font-mono": _vm.monospaced },
+      attrs: {
+        id: _vm.name,
+        name: _vm.name,
+        type: _vm.type,
+        placeholder: _vm.placeholder,
+        readonly: _vm.readonly,
+        disabled: _vm.disabled,
+        rows: _vm.rows
+      },
+      domProps: { value: _vm.value },
+      on: {
+        input: function($event) {
+          _vm.$emit("input", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm.help
+      ? _c("p", {
+          staticClass: "form__help",
+          domProps: { innerHTML: _vm._s(_vm.help) }
+        })
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-78cd7b65", module.exports)
+  }
+}
+
+/***/ }),
+/* 212 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pPassword__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pPassword___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pPassword__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
+    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pPassword___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pPassword___default.a);
+});
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(214)
+/* template */
+var __vue_template__ = __webpack_require__(215)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/pPassword/pPassword.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-340e2832", Component.options)
+  } else {
+    hotAPI.reload("data-v-340e2832", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 214 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'p-password',
+
+    data: function data() {
+        return {
+            revealed: false,
+            type: 'password'
+        };
+    },
+
+
+    props: {
+        name: String,
+        placeholder: String,
+        label: String,
+        help: String,
+        required: {
+            type: Boolean,
+            default: false
+        },
+        readonly: {
+            type: Boolean,
+            default: false
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        monospaced: {
+            type: Boolean,
+            default: false
+        },
+        neverShow: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+        showText: {
+            required: false,
+            type: String,
+            default: 'Show Password'
+        },
+        hideText: {
+            required: false,
+            type: String,
+            default: 'Hide Password'
+        }
+    },
+
+    methods: {
+        toggleVisibility: function toggleVisibility() {
+            this.type = this.type === 'password' ? 'text' : 'password';
+            this.revealed = !this.revealed;
+        }
+    }
+});
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.label
+      ? _c("label", {
+          staticClass: "form__label",
+          attrs: { for: _vm.name },
+          domProps: { innerHTML: _vm._s(_vm.label) }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      staticClass: "form__control",
+      class: { "font-mono": _vm.monospaced },
+      attrs: {
+        id: _vm.name,
+        name: _vm.name,
+        type: _vm.type,
+        placeholder: _vm.placeholder,
+        readonly: _vm.readonly,
+        disabled: _vm.disabled
+      }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form__control--meta" }, [
+      _c("div", { staticClass: "form__help" }, [
+        _vm.help
+          ? _c("span", { domProps: { innerHTML: _vm._s(_vm.help) } })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form__password" }, [
+        !_vm.neverShow
+          ? _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.toggleVisibility($event)
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.revealed ? _vm.hideText : _vm.showText) +
+                    "\n            "
+                )
+              ]
+            )
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-340e2832", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

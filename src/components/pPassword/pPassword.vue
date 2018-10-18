@@ -16,13 +16,17 @@
             :placeholder="placeholder"
             :readonly="readonly"
             :disabled="disabled"
-            :value="value"
-            @input="$emit('input', $event.target.value)"
         >
 
         <div class="form__control--meta">
             <div class="form__help">
                 <span v-if="help" v-html="help"></span>
+            </div>
+
+            <div class="form__password">
+                <a href="#" @click.prevent="toggleVisibility" v-if="! neverShow">
+                    {{ revealed ? hideText : showText }}
+                </a>
             </div>
         </div>
     </div>
@@ -30,21 +34,20 @@
 
 <script>
     export default {
-        name: 'p-input',
+        name: 'p-password',
+
+        data() {
+            return {
+                revealed: false,
+                type: 'password',
+            }
+        },
 
         props: {
             name: String,
             placeholder: String,
             label: String,
             help: String,
-            value: {
-                type: [String, Number],
-                default: '',
-            },
-            type: {
-                type: String,
-                default: 'text',
-            },
             required: {
                 type: Boolean,
                 default: false,
@@ -61,6 +64,28 @@
                 type: Boolean,
                 default: false,
             },
+            neverShow: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            showText: {
+                required: false,
+                type: String,
+                default: 'Show Password',
+            },
+            hideText: {
+                required: false,
+                type: String,
+                default: 'Hide Password',
+            },
         },
+
+        methods: {
+            toggleVisibility() {
+                this.type = this.type === 'password' ? 'text' : 'password'
+                this.revealed = ! this.revealed
+            }
+        }
     }
 </script>
