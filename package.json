@@ -20,6 +20,7 @@
     "laravel-mix": "^2.1.11",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "popper.js": "^1.14.4",
     "query-string": "^6.2.0",
     "tailwindcss": "^0.6.1",
     "vue": "^2.5.16"

@@ -30,6 +30,13 @@ Add help text below the input with the `help` property.
 <p-input name="full_name" help="Please put in your full name."></p-input>
 ```
 
+## Validation Errors and Messaging
+Add a validation message that can be toggled with the `error-message` and `has-error` properties.
+
+```html
+<p-input name="full_name" help="Please put in your full name." error-message="Your full name is required." :has-error="true"></p-input>
+```
+
 ## Props
 | Name | Type | Description | Options | Default |
 |------|------|-------------|---------|---------|
@@ -43,3 +50,5 @@ Add help text below the input with the `help` property.
 | `readonly` | `Boolean` | If the input field should be read-only or not. | true, false | false |
 | `disabled` | `Boolean` | If the input field should be disabled or not. | true, false | false |
 | `monospaced` | `Boolean` | If the font used in the input field should be monospaced or not. | true, false | false |
+| `has-error` | `Boolean` | Toggle if the input field has validation errors or not. | true, false | false |
+| `error-message` | `String` | The message to be displayed when the input field has an error. | | |

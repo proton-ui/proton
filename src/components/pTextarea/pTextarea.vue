@@ -12,7 +12,6 @@
             :class="{'font-mono': monospaced}"
             :id="name"
             :name="name"
-            :type="type"
             :placeholder="placeholder"
             :readonly="readonly"
             :disabled="disabled"

@@ -9,7 +9,7 @@
 
         <input
             class="form__control"
-            :class="{'font-mono': monospaced}"
+            :class="{'font-mono': monospaced, 'form__error': hasError}"
             :id="name"
             :name="name"
             :type="type"
@@ -23,6 +23,7 @@
         <div class="form__control--meta">
             <div class="form__help">
                 <span v-if="help" v-html="help"></span>
+                <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
             </div>
         </div>
     </div>
@@ -60,6 +61,16 @@
             monospaced: {
                 type: Boolean,
                 default: false,
+            },
+            hasError: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            errorMessage: {
+                required: false,
+                type: String,
+                default: '',
             },
         },
     }
