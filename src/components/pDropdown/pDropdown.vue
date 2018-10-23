@@ -5,7 +5,7 @@
         </button>
 
         <div v-show="isOpen" class="dropdown__options" ref="dropdown_options" :class="this.optionClasses">
-            <slot name="options" :options="options"></slot>
+            <slot name="options"></slot>
         </div>
     </div>
 </template>
@@ -44,7 +44,7 @@
 
             close() {
                 this.isOpen = false
-                this.popper.destroy()
+                this.destroyPopper()
             },
 
             toggle() {
@@ -71,11 +71,19 @@
                 }
 
                 return classes
+            },
+
+            destroyPopper() {
+                this.popper && this.popper.destroy()
             }
         },
 
         created() {
             this.listenForEscape()
         },
+
+        destroyed() {
+            this.destroyPopper()
+        }
     }
 </script>

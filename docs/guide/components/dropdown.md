@@ -5,6 +5,8 @@ title: Dropdown
 # Dropdown
 
 ## Default
+A dropdown is made up of two components. The outer-wrapping `dropdown` and the inner [`dropdown-item`](/guide/components/dropdown-item).
+
 ```html
 <p-dropdown>
     Click me!

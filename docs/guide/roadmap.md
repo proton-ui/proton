@@ -10,13 +10,14 @@ Proton UI is in active development and has not reached a stable release just yet
 - Card
 - Charts
     - [Frappe Charts](https://frappe.io/charts)
+- DataTable
+- Dropdown
 - Input
+- Modal
+- Textarea
 - Toggle
 
 ## In Progress
-- DataTable
-- Dropdown
-- Modal
 - Select
 
 ## To-Do
@@ -28,7 +29,6 @@ Proton UI is in active development and has not reached a stable release just yet
 - Number
 - Radio
 - Tabs
-- Textarea
 - Tooltip
 - WYSIWYG
     - Ability to configure which WYSIWYG editor to use:

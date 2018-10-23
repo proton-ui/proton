@@ -19,8 +19,10 @@ module.exports = {
                     { text: 'Card', link: '/guide/components/card' },
                     { text: 'Chart', link: '/guide/components/chart' },
                     { text: 'Dropdown', link: '/guide/components/dropdown' },
+                    { text: 'Dropdown Item', link: '/guide/components/dropdown-item' },
                     { text: 'Input', link: '/guide/components/input' },
                     { text: 'Modal', link: '/guide/components/modal' },
+                    { text: 'Textarea', link: '/guide/components/textarea' },
                     { text: 'Toggle', link: '/guide/components/toggle' },
                 ]
             }
@@ -45,8 +47,10 @@ module.exports = {
                     '/guide/components/card',
                     '/guide/components/chart',
                     '/guide/components/dropdown',
+                    '/guide/components/dropdown-item',
                     '/guide/components/input',
                     '/guide/components/modal',
+                    '/guide/components/textarea',
                     '/guide/components/toggle',
                 ],
             },

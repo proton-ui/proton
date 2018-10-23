@@ -2,7 +2,7 @@
     <div class="modal--overlay" v-if="shouldShow">
         <div class="modal" :class="{'modal--large': large, 'modal--x-large': extraLarge}" v-click-outside="clickedOutside">
             <div class="modal__header" v-if="! noHeader">
-                <slot name="header">
+                <slot name="header" :data="data">
                     <div class="modal__header--title" >
                         <span v-if="title">{{ title }}</span>
                     </div>
@@ -14,14 +14,12 @@
             </div>
 
             <div class="modal__body">
-                <slot></slot>
+                <slot :data="data"></slot>
             </div>
 
             <div class="modal__footer" v-if="! noFooter">
-                <slot name="footer">
-                    <div>
-                        <p-button @click="dismiss">Close</p-button>
-                    </div>
+                <slot name="footer" :data="data">
+                    <p-button @click="dismiss">Close</p-button>
                 </slot>
             </div>
         </div>
@@ -39,6 +37,7 @@
             return {
                 shouldShow: this.show,
                 loaded: this.show,
+                data: null,
             }
         },
 
@@ -141,8 +140,9 @@
             },
 
             listenForDirective() {
-                EventBus.$on('toggle-modal-' + this.name, () => {
+                EventBus.$on('toggle-modal-' + this.name, (data) => {
                     this.toggle()
+                    this.data = data
                 })
             },
 

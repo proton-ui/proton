@@ -46,7 +46,34 @@ Modals have a few sizing options, each togglable through the use of a couple pro
 To toggle the visibility of a modal instance, we recommend using the `v-modal` directive while referencing your modal's `name` property. The `v-modal` directive can be used on any clickable entity.
 
 ```html
-<p-button v-modal="example">Open Modal<p-button>
+<p-button v-modal:example>Open Modal<p-button>
+
+<p-modal name="example" extra-large>
+    Hello World!
+</p-modal>
+```
+
+## Passing Data
+You may optionally pass data along to the modal by assigning the directive with a value. The passed data will be available in each of the modal slots.
+
+::: tip NOTE
+The passed value will be parsed as an expression allowing you to easily pass objects and arrays of data through. If you wish to only pass a string through, you'll want to wrap your string in single-quotes.
+:::
+
+```js
+let data = {
+    foo: 'bar'
+}
+```
+
+```html
+<p-button v-modal:example="data">Open Modal<p-button>
+
+<p-modal name="example">
+    <template scope-slot="modal">
+        {{ modal.data.foo }}
+    </template>
+</p-modal>
 ```
 
 ## Props

@@ -9,7 +9,7 @@
 
         <textarea
             class="form__control"
-            :class="{'font-mono': monospaced}"
+            :class="{'font-mono': monospaced, 'form__error': hasError}"
             :id="name"
             :name="name"
             :placeholder="placeholder"
@@ -20,11 +20,12 @@
             @input="$emit('input', $event.target.value)"
         ></textarea>
 
-        <p
-            class="form__help"
-            v-if="help"
-            v-html="help"
-        ></p>
+        <div class="form__control--meta">
+            <div class="form__help">
+                <span v-if="help" v-html="help"></span>
+                <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -56,6 +57,16 @@
             monospaced: {
                 type: Boolean,
                 default: false,
+            },
+            hasError: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            errorMessage: {
+                required: false,
+                type: String,
+                default: '',
             },
             rows: {
                 required: false,
