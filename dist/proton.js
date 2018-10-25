@@ -53903,9 +53903,7 @@ var Plugin = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tooltip_js__ = __webpack_require__(233);
 
 
-function bind(el, binding, vnode) {
-    console.log(binding);
-
+function bind(el, binding) {
     new __WEBPACK_IMPORTED_MODULE_0_tooltip_js__["a" /* default */](el, {
         placement: binding.arg || 'top',
         title: binding.value

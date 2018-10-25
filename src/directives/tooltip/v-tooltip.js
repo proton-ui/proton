@@ -1,8 +1,6 @@
 import Tooltip from 'tooltip.js'
 
-function bind(el, binding, vnode) {
-    console.log(binding)
-
+function bind(el, binding) {
     new Tooltip(el, {
         placement: binding.arg || 'top',
         title: binding.value
