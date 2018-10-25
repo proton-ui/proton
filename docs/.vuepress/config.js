@@ -25,6 +25,7 @@ module.exports = {
                     { text: 'Radio', link: '/guide/components/radio' },
                     { text: 'Textarea', link: '/guide/components/textarea' },
                     { text: 'Toggle', link: '/guide/components/toggle' },
+                    { text: 'Tooltip', link: '/guide/components/tooltip' },
                 ]
             }
         ],
@@ -54,6 +55,7 @@ module.exports = {
                     '/guide/components/radio',
                     '/guide/components/textarea',
                     '/guide/components/toggle',
+                    '/guide/components/tooltip',
                 ],
             },
         ],
