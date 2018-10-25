@@ -28,6 +28,11 @@
             name: String,
             label: String,
             help: String,
+            value: {
+                required: false,
+                type: String,
+                default: undefined,
+            },
             hasError: {
                 required: false,
                 type: Boolean,

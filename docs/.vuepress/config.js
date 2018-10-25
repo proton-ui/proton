@@ -22,6 +22,7 @@ module.exports = {
                     { text: 'Dropdown Item', link: '/guide/components/dropdown-item' },
                     { text: 'Input', link: '/guide/components/input' },
                     { text: 'Modal', link: '/guide/components/modal' },
+                    { text: 'Radio', link: '/guide/components/radio' },
                     { text: 'Textarea', link: '/guide/components/textarea' },
                     { text: 'Toggle', link: '/guide/components/toggle' },
                 ]
@@ -50,6 +51,7 @@ module.exports = {
                     '/guide/components/dropdown-item',
                     '/guide/components/input',
                     '/guide/components/modal',
+                    '/guide/components/radio',
                     '/guide/components/textarea',
                     '/guide/components/toggle',
                 ],

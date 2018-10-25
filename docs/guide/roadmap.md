@@ -14,6 +14,7 @@ Proton UI is in active development and has not reached a stable release just yet
 - Dropdown
 - Input
 - Modal
+- Radio
 - Textarea
 - Toggle
 
@@ -21,13 +22,12 @@ Proton UI is in active development and has not reached a stable release just yet
 - Select
 
 ## To-Do
-- Alert
+- Banner
 - Checkbox
 - Chip
 - List
     - [Draggable](https://shopify.github.io/draggable)
-- Number
-- Radio
+- Toast
 - Tabs
 - Tooltip
 - WYSIWYG

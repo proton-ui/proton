@@ -1902,7 +1902,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(223)("./" + name);
+                __webpack_require__(230)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -34599,7 +34599,7 @@ module.exports = __webpack_require__(138);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components__ = __webpack_require__(139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives__ = __webpack_require__(225);
 
 
 
@@ -34659,13 +34659,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pPagination", function() { return __WEBPACK_IMPORTED_MODULE_7__pPagination__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pPassword__ = __webpack_require__(202);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pPassword", function() { return __WEBPACK_IMPORTED_MODULE_8__pPassword__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pRadio__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pRadio__ = __webpack_require__(206);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pRadio", function() { return __WEBPACK_IMPORTED_MODULE_9__pRadio__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pSelect__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pSelect__ = __webpack_require__(213);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pSelect", function() { return __WEBPACK_IMPORTED_MODULE_10__pSelect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pTextarea__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pTextarea__ = __webpack_require__(217);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pTextarea", function() { return __WEBPACK_IMPORTED_MODULE_11__pTextarea__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pToggle__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pToggle__ = __webpack_require__(221);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "pToggle", function() { return __WEBPACK_IMPORTED_MODULE_12__pToggle__["a"]; });
 
 
@@ -40307,7 +40307,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         onClick: function onClick(event) {
-            $emit('click', event);
+            this.$emit('click', event);
         }
     }
 });
@@ -52708,12 +52708,16 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pSelect__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pSelect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pRadio__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pRadio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pRadioGroup__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__pRadioGroup__);
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
-    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pSelect___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pSelect___default.a);
+    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pRadio___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pRadio___default.a);
+    Vue.component(__WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default.a.name, __WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default.a);
 });
 
 /***/ }),
@@ -52726,6 +52730,371 @@ var normalizeComponent = __webpack_require__(1)
 var __vue_script__ = __webpack_require__(208)
 /* template */
 var __vue_template__ = __webpack_require__(209)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/pRadio/pRadio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-24d6672f", Component.options)
+  } else {
+    hotAPI.reload("data-v-24d6672f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 208 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'p-radio',
+
+    model: {
+        prop: 'modelValue',
+        event: 'input'
+    },
+
+    props: {
+        name: {
+            required: true,
+            type: String
+        },
+
+        id: {
+            required: true,
+            type: String
+        },
+
+        value: {
+            required: false,
+            type: String,
+            default: ''
+        },
+
+        modelValue: {
+            default: undefined
+        },
+
+        checked: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+
+        readonly: {
+            type: Boolean,
+            default: false
+        },
+
+        disabled: {
+            type: Boolean,
+            default: false
+        }
+    },
+
+    computed: {
+        state: function state() {
+            if (this.modelValue === undefined) {
+                return this.checked;
+            }
+
+            return this.modelValue === this.value;
+        }
+    },
+
+    methods: {
+        onChange: function onChange() {
+            this.toggle();
+        },
+        toggle: function toggle() {
+            this.$emit('input', this.value);
+        }
+    },
+
+    watch: {
+        checked: function checked(value) {
+            if (value !== this.state) {
+                this.toggle();
+            }
+        }
+    },
+
+    mounted: function mounted() {
+        if (this.checked && !this.state) {
+            this.toggle();
+        }
+    }
+});
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form__radio-container" }, [
+    _c(
+      "label",
+      { attrs: { for: _vm.id } },
+      [
+        _c("input", {
+          staticClass: "form__radio",
+          attrs: {
+            type: "radio",
+            id: _vm.id,
+            name: _vm.name,
+            readonly: _vm.readonly,
+            disabled: _vm.disabled
+          },
+          domProps: { value: _vm.value, checked: _vm.state },
+          on: { change: _vm.onChange }
+        }),
+        _vm._v(" "),
+        _vm._t("default")
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-24d6672f", module.exports)
+  }
+}
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(211)
+/* template */
+var __vue_template__ = __webpack_require__(212)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/pRadio/pRadioGroup.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-43990340", Component.options)
+  } else {
+    hotAPI.reload("data-v-43990340", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 211 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'p-radio-group',
+
+    props: {
+        name: String,
+        label: String,
+        help: String,
+        value: {
+            required: false,
+            type: String,
+            default: undefined
+        },
+        hasError: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+        errorMessage: {
+            required: false,
+            type: String,
+            default: ''
+        },
+        inline: {
+            required: false,
+            type: Boolean,
+            default: false
+        }
+    }
+});
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("fieldset", { staticClass: "form__radio-group" }, [
+    _vm.label
+      ? _c("label", {
+          staticClass: "form__label",
+          attrs: { for: _vm.name },
+          domProps: { innerHTML: _vm._s(_vm.label) }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { class: { "form__radio-group--inline": _vm.inline } },
+      [_vm._t("default")],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form__control--meta" }, [
+      _c("div", { staticClass: "form__help" }, [
+        _vm.help
+          ? _c("span", { domProps: { innerHTML: _vm._s(_vm.help) } })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errorMessage
+          ? _c("span", {
+              staticClass: "form__error--message",
+              domProps: { innerHTML: _vm._s(_vm.errorMessage) }
+            })
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-43990340", module.exports)
+  }
+}
+
+/***/ }),
+/* 213 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pSelect__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pSelect__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
+    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pSelect___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pSelect___default.a);
+});
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(215)
+/* template */
+var __vue_template__ = __webpack_require__(216)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52764,7 +53133,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 208 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52816,7 +53185,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 209 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52887,11 +53256,11 @@ if (false) {
 }
 
 /***/ }),
-/* 210 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pTextarea__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pTextarea__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pTextarea___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pTextarea__);
 
 
@@ -52900,15 +53269,15 @@ if (false) {
 });
 
 /***/ }),
-/* 211 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(212)
+var __vue_script__ = __webpack_require__(219)
 /* template */
-var __vue_template__ = __webpack_require__(213)
+var __vue_template__ = __webpack_require__(220)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52947,7 +53316,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 212 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53031,7 +53400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 213 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53093,11 +53462,11 @@ if (false) {
 }
 
 /***/ }),
-/* 214 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pToggle__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pToggle__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pToggle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pToggle__);
 
 
@@ -53106,15 +53475,15 @@ if (false) {
 });
 
 /***/ }),
-/* 215 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(223)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(224)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53153,7 +53522,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 216 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53246,7 +53615,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53306,24 +53675,24 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__click_outside__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__click_outside__ = __webpack_require__(226);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "vClickOutside", function() { return __WEBPACK_IMPORTED_MODULE_0__click_outside__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(228);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "vModal", function() { return __WEBPACK_IMPORTED_MODULE_1__modal__["a"]; });
 
 
 
 /***/ }),
-/* 219 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__v_click_outside__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__v_click_outside__ = __webpack_require__(227);
 
 
 var Plugin = {
@@ -53337,7 +53706,7 @@ var Plugin = {
 /* harmony default export */ __webpack_exports__["a"] = (Plugin);
 
 /***/ }),
-/* 220 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53464,11 +53833,11 @@ var directive = {
 };/* harmony default export */ __webpack_exports__["a"] = (typeof window !== 'undefined' ? directive : {});
 
 /***/ }),
-/* 221 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__v_modal__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__v_modal__ = __webpack_require__(229);
 
 
 var Plugin = {
@@ -53482,7 +53851,7 @@ var Plugin = {
 /* harmony default export */ __webpack_exports__["a"] = (Plugin);
 
 /***/ }),
-/* 222 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53503,7 +53872,7 @@ var directive = {
 /* harmony default export */ __webpack_exports__["a"] = (typeof window !== 'undefined' ? directive : {});
 
 /***/ }),
-/* 223 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -53768,353 +54137,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 223;
-
-/***/ }),
-/* 224 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pRadio__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__pRadio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pRadioGroup__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__pRadioGroup__);
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
-    Vue.component(__WEBPACK_IMPORTED_MODULE_0__pRadio___default.a.name, __WEBPACK_IMPORTED_MODULE_0__pRadio___default.a);
-    Vue.component(__WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default.a.name, __WEBPACK_IMPORTED_MODULE_1__pRadioGroup___default.a);
-});
-
-/***/ }),
-/* 225 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(226)
-/* template */
-var __vue_template__ = __webpack_require__(227)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "src/components/pRadio/pRadio.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-24d6672f", Component.options)
-  } else {
-    hotAPI.reload("data-v-24d6672f", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 226 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'p-radio',
-
-    model: {
-        prop: 'modelValue',
-        event: 'input'
-    },
-
-    props: {
-        name: {
-            required: true,
-            type: String
-        },
-
-        id: {
-            required: true,
-            type: String
-        },
-
-        value: {
-            required: false,
-            type: String,
-            default: ''
-        },
-
-        modelValue: {
-            default: undefined
-        },
-
-        checked: {
-            required: false,
-            type: Boolean,
-            default: false
-        }
-    },
-
-    computed: {
-        state: function state() {
-            if (this.modelValue === undefined) {
-                return this.checked;
-            }
-
-            return this.modelValue === this.value;
-        }
-    },
-
-    methods: {
-        onChange: function onChange() {
-            this.toggle();
-        },
-        toggle: function toggle() {
-            this.$emit('input', this.value);
-        }
-    },
-
-    watch: {
-        checked: function checked(value) {
-            if (value !== this.state) {
-                this.toggle();
-            }
-        }
-    },
-
-    mounted: function mounted() {
-        if (this.checked && !this.state) {
-            this.toggle();
-        }
-    }
-});
-
-/***/ }),
-/* 227 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form__radio-container" }, [
-    _c(
-      "label",
-      { attrs: { for: _vm.id } },
-      [
-        _c("input", {
-          staticClass: "form__radio",
-          attrs: { type: "radio", id: _vm.id, name: _vm.name },
-          domProps: { value: _vm.value, checked: _vm.state },
-          on: { change: _vm.onChange }
-        }),
-        _vm._v(" "),
-        _vm._t("default")
-      ],
-      2
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-24d6672f", module.exports)
-  }
-}
-
-/***/ }),
-/* 228 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(229)
-/* template */
-var __vue_template__ = __webpack_require__(230)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "src/components/pRadio/pRadioGroup.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-43990340", Component.options)
-  } else {
-    hotAPI.reload("data-v-43990340", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 229 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'p-radio-group',
-
-    props: {
-        name: String,
-        label: String,
-        help: String,
-        hasError: {
-            required: false,
-            type: Boolean,
-            default: false
-        },
-        errorMessage: {
-            required: false,
-            type: String,
-            default: ''
-        },
-        inline: {
-            required: false,
-            type: Boolean,
-            default: false
-        }
-    }
-});
-
-/***/ }),
-/* 230 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("fieldset", { staticClass: "form__radio-group" }, [
-    _vm.label
-      ? _c("label", {
-          staticClass: "form__label",
-          attrs: { for: _vm.name },
-          domProps: { innerHTML: _vm._s(_vm.label) }
-        })
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "div",
-      { class: { "form__radio-group--inline": _vm.inline } },
-      [_vm._t("default")],
-      2
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "form__control--meta" }, [
-      _c("div", { staticClass: "form__help" }, [
-        _vm.help
-          ? _c("span", { domProps: { innerHTML: _vm._s(_vm.help) } })
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.errorMessage
-          ? _c("span", {
-              staticClass: "form__error--message",
-              domProps: { innerHTML: _vm._s(_vm.errorMessage) }
-            })
-          : _vm._e()
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-43990340", module.exports)
-  }
-}
+webpackContext.id = 230;
 
 /***/ })
 /******/ ]);

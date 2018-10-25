@@ -9,6 +9,8 @@
                 :value="value"
                 @change="onChange"
                 :checked="state"
+                :readonly="readonly"
+                :disabled="disabled"
             >
             
             <slot></slot>
@@ -48,6 +50,16 @@
 
             checked: {
                 required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            readonly: {
+                type: Boolean,
+                default: false,
+            },
+
+            disabled: {
                 type: Boolean,
                 default: false,
             },
