@@ -1,5 +1,7 @@
-import pComponent from './pSelect'
+import pOption from './pOption'
+import pSelect from './pSelect'
 
 export default Vue => {
-    Vue.component(pComponent.name, pComponent)
+    Vue.component(pOption.name, pOption)
+    Vue.component(pSelect.name, pSelect)
 }
