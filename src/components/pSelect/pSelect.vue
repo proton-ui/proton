@@ -7,13 +7,24 @@
             v-html="label">
         </label>
 
-        <div class="form__select" :class="{'form__select--open': isOpen}" v-click-outside="close">
-            <button @click="toggle" type="button" class="form__select-button" ref="button">
-                <span v-if="selected !== null" v-html="selected"></span>
+        <div class="form__select" :class="{'form__select--open': isOpen, 'form__select--dark': dark}" v-click-outside="close">
+            <button
+                @click="toggle"
+                type="button"
+                class="form__select-button"
+                :class="{'form__error': hasError}"
+                :disabled="disabled"
+                ref="button"
+                @keydown.esc="close"
+                @keydown.down.prevent="highlightNext"
+                @keydown.up.prevent="highlightPrevious"
+                @keydown.enter.prevent="selectHighlighted"
+            >
+                <span v-if="selected !== null" v-html="selected.label || selected"></span>
                 <span v-else class="form__select-placeholder" v-html="placeholder"></span>
             </button>
 
-            <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+            <div class="form__select-arrow pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </div>
 
@@ -27,15 +38,16 @@
                     @keydown.down="highlightNext"
                     @keydown.up="highlightPrevious"
                     @keydown.enter.prevent="selectHighlighted"
+                    v-if="filterable"
                 >
 
                 <ul class="form__select-options" v-show="filteredOptions.length > 0" ref="options">
                     <li class="form__select-option"
                         :class="{'form__select-option--selected': isSelected(option), 'form__select-option--highlighted': isHighlighted(index)}"
                         v-for="(option, index) in filteredOptions"
-                        :key="option"
+                        :key="option.value || option"
                         @click="select(option)"
-                    >{{ option }}</li>
+                    >{{ option.label || option }}</li>
                 </ul>
 
                 <div
@@ -44,6 +56,13 @@
                 >
                     No results found for "{{ search }}"
                 </div>
+            </div>
+        </div>
+
+        <div class="form__control--meta">
+            <div class="form__help">
+                <span v-if="help" v-html="help"></span>
+                <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
             </div>
         </div>
     </div>
@@ -58,9 +77,9 @@
         data() {
             return {
                 isOpen: false,
-                selected: this.value,
                 search: '',
                 highlighted: 0,
+                model: this.value
             }
         },
 
@@ -80,10 +99,37 @@
                 type: String,
             },
 
+            help: {
+                required: false,
+                type: String,
+            },
+
             placeholder: {
                 required: false,
                 type: String,
                 default: 'Please select an option...',
+            },
+
+            required: {
+                type: Boolean,
+                default: false,
+            },
+
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+
+            hasError: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            errorMessage: {
+                required: false,
+                type: String,
+                default: '',
             },
 
             options: {
@@ -94,23 +140,55 @@
                 },
             },
 
-            multiple: {
+            filterFunction: {
+                required: false,
+                default: null
+            },
+
+            filterable: {
                 required: false,
                 type: Boolean,
                 default: false,
             },
 
-            filterFunction: {
+            dark: {
                 required: false,
-                default: null
-            }
+                type: Boolean,
+                default: false,
+            },
         },
 
         computed: {
+            selected: {
+                get: function () {
+                    if (this.model === null) {
+                        return this.model
+                    }
+
+                    if (typeof _.head(this.options) === 'object') {
+                        let index = _.findIndex(this.options, (option) => {
+
+                            return option.value == (this.model.value || this.model)
+                        })
+
+                        return this.options[index]
+                    }
+
+                    return this.model
+                },
+                
+                set: function(selected) {
+                    this.model = selected
+                }                
+            },
+
             filteredOptions() {
                 if (this.filterFunction == null) {
                     return this.options.filter((option) => {
-                        return option.toLowerCase().startsWith(this.search.toLowerCase())
+                        let value = option.value || option
+                        let label = option.label || option
+
+                        return label.toLowerCase().startsWith(this.search.toLowerCase())
                     })
                 }
 
@@ -133,7 +211,9 @@
                 this.isOpen = true
 
                 this.$nextTick(() => {
-                    this.$refs.search.focus()
+                    if (this.filterable) {
+                        this.$refs.search.focus()
+                    }
 
                     this.setupPopper()
                 })
@@ -164,7 +244,8 @@
             },
 
             select(option) {
-                this.$emit('input', option)
+                this.$emit('input', option.value || option)
+                this.$emit('change', option.value || option)
                 this.selected = option
                 this.close()
             },
@@ -174,6 +255,10 @@
             },
 
             isSelected(option) {
+                if (option.value && (this.selected !== null)) {
+                    return ((option.value === this.selected.value) || (option.value === this.selected))
+                }
+
                 return (option === this.selected)
             },
 

@@ -11,15 +11,8 @@
                 <div class="row" style="margin-bottom: 0;">
                     <div class="col sm:w-1/4">
                         <div class="relative">
-                            <select name="column" class="form__control" v-model="filter.column">
-                                <option
-                                    v-for="option in displayable"
-                                    :key="option"
-                                    :value="option">
-
-                                    {{ column_names[option] }}
-                                </option>
-                            </select>
+                            <p-select name="column" v-model="filter.column" :options="columns">
+                            </p-select>
 
                             <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -29,14 +22,33 @@
 
                     <div class="col sm:w-1/4">
                         <div class="relative">
-                            <select name="operator" class="form__control" v-model="filter.operator">
-                                <option value="equals">equals</option>
-                                <option value="contains">contains</option>
-                                <option value="starts_with">starts with</option>
-                                <option value="ends_with">ends with</option>
-                                <option value="greater_than">greater than</option>
-                                <option value="lesser_than">lesser than</option>
-                            </select>
+                            <p-select name="operator" v-model="filter.operator" :options="[
+                                {
+                                    'label': 'equals',
+                                    'value': 'equals',
+                                },
+                                {
+                                    'label': 'contains',
+                                    'value': 'contains',
+                                },
+                                {
+                                    'label': 'starts with',
+                                    'value': 'starts_with',
+                                },
+                                {
+                                    'label': 'ends with',
+                                    'value': 'ends_with',
+                                },
+                                {
+                                    'label': 'greater than',
+                                    'value': 'greater_than',
+                                },
+                                {
+                                    'label': 'lesser than',
+                                    'value': 'lesser_than',
+                                },
+                            ]">
+                            </p-select>
 
                             <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -69,15 +81,41 @@
                     <label for="limit" class="form__label">Records Per Page</label>
 
                     <div class="relative">
-                        <select name="limit" class="form__control" v-model="pagination.perPage" @change="changeLimit">
-                            <option :value="5">5</option>
-                            <option :value="10">10</option>
-                            <option :value="25">25</option>
-                            <option :value="50">50</option>
-                            <option :value="100">100</option>
-                            <option :value="500">500</option>
-                            <option :value="1000">1000</option>
-                        </select>
+                        <p-select name="limit" v-model="pagination.perPage" @change="changeLimit" :options="[
+                            {
+                                label: '1',
+                                value: 1,
+                            },
+                            {
+                                label: '5',
+                                value: 5,
+                            },
+                            {
+                                label: '10',
+                                value: 10,
+                            },
+                            {
+                                label: '25',
+                                value: 25,
+                            },
+                            {
+                                label: '50',
+                                value: 50,
+                            },
+                            {
+                                label: '100',
+                                value: 100,
+                            },
+                            {
+                                label: '500',
+                                value: 500,
+                            },
+                            {
+                                label: '1000',
+                                value: 1000,
+                            },
+                        ]">
+                        </p-select>
 
                         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -156,7 +194,7 @@
                     totalRecords: 0,
                     currentPage: 1,
                     totalPages: 0,
-                    perPage: 5,
+                    perPage: 1,
                 },
 
                 filter: {
@@ -169,6 +207,21 @@
                     key: this.sortBy,
                     order: this.sortIn,
                 },
+            }
+        },
+
+        computed: {
+            columns() {
+                let columns = []
+
+                _.forEach(this.displayable, (option) => {
+                    columns.push({
+                        'label': this.column_names[option],
+                        'value': option,
+                    })
+                })
+
+                return columns
             }
         },
 
