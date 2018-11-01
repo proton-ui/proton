@@ -16,13 +16,13 @@ Proton UI is in active development and has not reached a stable release just yet
 - Input
 - Modal
 - Radio
+- Select
 - Textarea
 - Toggle
 - Tooltip
 
 ## In Progress
 - Banner
-- Select
 
 ## To-Do
 - Chip
