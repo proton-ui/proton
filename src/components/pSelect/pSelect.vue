@@ -41,6 +41,12 @@
                     v-if="filterable"
                 >
 
+                <div class="form__select-controls" v-if="showControls">
+                    <span>Press enter to select</span>
+                    <span>↑ ↓ to navigate</span>
+                    <span>esc to dismiss</span>
+                </div>
+
                 <ul class="form__select-options" v-show="filteredOptions.length > 0" ref="options">
                     <li class="form__select-option"
                         :class="{'form__select-option--selected': isSelected(option), 'form__select-option--highlighted': isHighlighted(index)}"
@@ -156,6 +162,12 @@
                 type: Boolean,
                 default: false,
             },
+
+            showControls: {
+                required: false,
+                type: Boolean,
+                default: false,
+            }
         },
 
         computed: {

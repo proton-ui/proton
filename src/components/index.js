@@ -1,3 +1,4 @@
+export { default as pBanner } from './pBanner'
 export { default as pButton } from './pButton'
 export { default as pCard } from './pCard'
 export { default as pChart } from './pChart'

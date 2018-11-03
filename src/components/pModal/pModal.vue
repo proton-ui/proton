@@ -4,7 +4,7 @@
             <div class="modal__header" v-if="! noHeader">
                 <slot name="header" :data="data">
                     <div class="modal__header--title" >
-                        <span v-if="title">{{ title }}</span>
+                        <span v-if="title" v-html="title"></span>
                     </div>
 
                     <div>
