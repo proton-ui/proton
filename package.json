@@ -5,6 +5,7 @@
   "main": "dist/proton.js",
   "repository": "git@github.com:efellemedia/proton.git",
   "author": "efelle creative <hello@efelle.com>",
+  "homepage": "https://proton.efelle.co/",
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

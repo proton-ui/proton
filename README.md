@@ -7,8 +7,7 @@
 # Proton UI
 > An Elegant Vue.js Component Library
 
-## Status: Alpha
-Proton is still in very early development.
+## Status: Beta
 
 ## License
 [MIT](/LICENSE)
