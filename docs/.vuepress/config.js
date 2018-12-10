@@ -1,6 +1,7 @@
 module.exports = {
     title: 'Proton UI',
     description: 'An Elegant Vue.js Component Library Built For Atomic CSS Frameworks',
+    ga: 'UA-130579476-1',
 
     themeConfig: {
         repo: 'efellemedia/proton',
@@ -64,4 +65,8 @@ module.exports = {
             },
         ],
     },
+
+    plugins: [
+        '@vuepress/google-analytics',
+    ],
 }
