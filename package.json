@@ -12,8 +12,8 @@
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "node_modules/vuepress/bin/vuepress.js dev docs",
+    "docs:build": "node_modules/vuepress/bin/vuepress.js build docs"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -29,9 +29,6 @@
   },
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "vuepress": "^0.14.4",
-    "webpack": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "vuepress": "^0.14.8"
   }
 }
