@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form__group">
         <label
             class="form__label"
             :for="name"

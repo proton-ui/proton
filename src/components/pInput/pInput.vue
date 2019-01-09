@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form__group">
         <label
             class="form__label"
             :for="name"
@@ -18,9 +18,11 @@
             :disabled="disabled"
             :value="value"
             @input="$emit('input', $event.target.value)"
+            :autocomplete="autocomplete"
+            :autofocus="autofocus"
         >
 
-        <div class="form__control--meta">
+        <div class="form__control--meta" v-if="help || errorMessage">
             <div class="form__help">
                 <span v-if="help" v-html="help"></span>
                 <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
@@ -71,6 +73,16 @@
                 required: false,
                 type: String,
                 default: '',
+            },
+            autocomplete: {
+                required: false,
+                type: String,
+                default: '',
+            },
+            autofocus: {
+                required: false,
+                type: Boolean,
+                default: false,
             },
         },
     }

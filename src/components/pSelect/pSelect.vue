@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3">
+    <div class="form__group">
         <label
             class="form__label"
             :for="name"
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="form__control--meta">
+        <div class="form__control--meta" v-if="help || errorMessage">
             <div class="form__help">
                 <span v-if="help" v-html="help"></span>
                 <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
@@ -191,7 +191,7 @@
                 
                 set: function(selected) {
                     this.model = selected
-                }                
+                }
             },
 
             filteredOptions() {
@@ -211,7 +211,11 @@
         watch: {
             search() {
                 this.resetHighlighted()
-            }
+            },
+
+            value(value) {
+                this.select(value)
+            },
         },
 
         methods: {
@@ -314,7 +318,9 @@
         },
 
         beforeDestroy() {
-            this.popper.destroy()
+            if (this.popper) {
+                this.popper.destroy()
+            }
         }
     }
 </script>

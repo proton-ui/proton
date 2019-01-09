@@ -146,10 +146,10 @@
                 </thead>
 
                 <tbody>
-                    <tr v-for="(record, index) in records" :key="index">
-                        <td v-for="(columnValue, column) in record" :key="column">
-                            <slot :name="column" :value="columnValue">
-                                {{ columnValue }}
+                    <tr v-for="(record, index) in records" :key="index">                        
+                        <td v-for="column in displayable" :key="column">
+                            <slot :name="column" :record="record">
+                                {{ record[column] }}
                             </slot>
                         </td>
                         <td class="text-right">
@@ -194,7 +194,7 @@
                     totalRecords: 0,
                     currentPage: 1,
                     totalPages: 0,
-                    perPage: 1,
+                    perPage: this.perPage,
                 },
 
                 filter: {
@@ -253,6 +253,18 @@
                 required: false,
                 type: String,
                 default: 'asc',
+            },
+
+            perPage: {
+                required: false,
+                type: Number,
+                default: 10,
+            },
+        },
+
+        watch: {
+            endpoint() {
+                this.getRecords()
             },
         },
 

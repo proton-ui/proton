@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form__group">
         <label
             class="form__label"
             :for="name"
@@ -20,7 +20,7 @@
             @input="$emit('input', $event.target.value)"
         ></textarea>
 
-        <div class="form__control--meta">
+        <div class="form__control--meta" v-if="help || errorMessage">
             <div class="form__help">
                 <span v-if="help" v-html="help"></span>
                 <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
