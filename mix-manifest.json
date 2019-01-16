@@ -1,3 +1,6 @@
 {
-    "/dist/proton.js": "/dist/proton.js"
+    "/dist/proton.js": "/dist/proton.js",
+    "/dist/proton.css": "/dist/proton.css",
+    "/dist/proton-components.css": "/dist/proton-components.css",
+    "/docs/.vuepress/public/proton-components.css": "/docs/.vuepress/public/proton-components.css"
 }

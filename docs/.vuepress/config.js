@@ -3,6 +3,11 @@ module.exports = {
     description: 'An Elegant Vue.js Component Library Built For Atomic CSS Frameworks',
     ga: 'UA-130579476-1',
 
+    head: [
+        ['link', { rel: 'icon', href: '/hero.png' }],
+        ['link', { rel: 'stylesheet', href: '/proton-components.css' }],
+    ],
+
     themeConfig: {
         repo: 'efellemedia/proton',
         docsDir: 'docs',

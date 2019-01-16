@@ -1,4 +1,5 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix')
+const tailwindcss = require('tailwindcss')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,4 +12,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('src/index.js', 'dist/proton.js');
+mix.js('src/index.js', 'dist/proton.js')
+    .sass('src/sass/proton.scss', 'dist/proton.css')
+    .sass('src/sass/_components.scss', 'dist/proton-components.css')
+    .copy('dist/proton-components.css', 'docs/.vuepress/public')
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.js') ],
+    })

@@ -4,24 +4,62 @@ title: Button
 
 # Button
 
-## Default
+## Examples
+
+<proton-example>
+<p-button>Default</p-button>
+<p-button theme="primary">Primary</p-button>
+<p-button theme="secondary">Secondary</p-button>
+<p-button theme="success">Success</p-button>
+<p-button theme="danger">Danger</p-button>
+<p-button theme="warning">Warning</p-button>
+<p-button theme="info">Info</p-button>
+
+<template slot="code">
+
 ```html
-<p-button>Click Me</p-button>
+<p-button>Default</p-button>
+<p-button theme="primary">Primary</p-button>
+<p-button theme="secondary">Secondary</p-button>
+<p-button theme="success">Success</p-button>
+<p-button theme="danger">Danger</p-button>
+<p-button theme="warning">Warning</p-button>
+<p-button theme="info">Info</p-button>
 ```
+
+</template>
+</proton-example>
 
 ## Size
 Define the size of the button with the `size` property.
 
+<proton-example>
+<p-button size="large">Large Button</p-button>
+<p-button size="large" theme="secondary">Large Button</p-button>
+
+<template slot="code">
+
 ```html
-<p-button size="large">Save</p-button>
+<p-button size="large">Large Button</p-button>
+<p-button size="large" theme="secondary">Large Button</p-button>
 ```
 
-## Theme
-Define the theme of the button with the `theme` property.
+</template>
+</proton-example>
+
+<proton-example>
+<p-button size="small">Small Button</p-button>
+<p-button size="small" theme="secondary">Small Button</p-button>
+
+<template slot="code">
 
 ```html
-<p-button theme="primary">Save</p-button>
+<p-button size="small">Small Button</p-button>
+<p-button size="small" theme="secondary">Small Button</p-button>
 ```
+
+</template>
+</proton-example>
 
 ## Props
 | Name | Type | Description | Options | Default |

@@ -17,19 +17,19 @@ Proton UI is in active development and has not reached a stable release just yet
 - Modal
 - Radio
 - Select
+- Tabs
 - Textarea
 - Toggle
 - Tooltip
 
 ## In Progress
 - Banner
+- Toast
 
 ## To-Do
 - Chip
 - List
     - [Draggable](https://shopify.github.io/draggable)
-- Toast
-- Tabs
 - WYSIWYG
     - Ability to configure which WYSIWYG editor to use:
     - [Redactor](https://imperavi.com/redactor)
