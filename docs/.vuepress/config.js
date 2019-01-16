@@ -5,7 +5,9 @@ module.exports = {
 
     head: [
         ['link', { rel: 'icon', href: '/hero.png' }],
+        ['link', { rel: 'stylesheet', href: '/proton-preflight.css' }],
         ['link', { rel: 'stylesheet', href: '/proton-components.css' }],
+        ['link', { rel: 'stylesheet', href: '/proton-utilities.css' }],
     ],
 
     themeConfig: {
