@@ -4,24 +4,48 @@ title: Toggle
 
 # Toggle
 
-## Default
+## Examples
+<proton-example>
+<p-toggle name="sign_up_newsletter"></p-toggle>
+
+<template slot="code">
+
 ```html
 <p-toggle name="sign_up_newsletter"></p-toggle>
 ```
 
+</template>
+</proton-example>
+
 ## Label
 Add a label to the toggle input with the `label` property.
+
+<proton-example>
+<p-toggle name="sign_up_newsletter" label="Sign up for newsletter"></p-toggle>
+
+<template slot="code">
 
 ```html
 <p-toggle name="sign_up_newsletter" label="Sign up for newsletter"></p-toggle>
 ```
 
+</template>
+</proton-example>
+
 ## Help
 Add help text below the toggle with the `help` property.
+
+<proton-example>
+<p-toggle name="sign_up_newsletter" help="Yes, I'd like to sign up for your awesome newsletter!"></p-toggle>
+
+<template slot="code">
 
 ```html
 <p-toggle name="sign_up_newsletter" help="Yes, I'd like to sign up for your awesome newsletter!"></p-toggle>
 ```
+
+</template>
+</proton-example>
 
 ## Props
 | Name | Type | Description | Options | Default |

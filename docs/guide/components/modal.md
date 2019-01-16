@@ -7,50 +7,102 @@ title: Modal
 
 ---
 
-## Default
+## Examples
 The default modal includes a close button in both the header and footer sections.
 
+<proton-example>
+<ClientOnly>
+<p-button v-modal:example-1>Launch Modal</p-button>
+
+<p-modal name="example-1">Hello World!</p-modal>
+</ClientOnly>
+
+<template slot="code">
+
 ```html
-<p-modal name="example">
+<p-button v-modal:example-1>Launch Modal</p-input>
+
+<p-modal name="example-1">
     Hello World!
 </p-modal>
 ```
+
+</template>
+</proton-example>
 
 ## Title
 Define a title for your modal with the `title` prop.
 
+<proton-example>
+<ClientOnly>
+<p-button v-modal:example-2>Launch Modal</p-button>
+
+<p-modal name="example-2" title="Greetings">Hello World!</p-modal>
+</ClientOnly>
+
+<template slot="code">
+
 ```html
-<p-modal name="example" title="Greetings">
+<p-button v-modal:example-2>Launch Modal</p-input>
+
+<p-modal name="example-2" title="Greetings">
     Hello World!
 </p-modal>
 ```
+
+</template>
+</proton-example>
 
 ## Sizes
 Modals have a few sizing options, each togglable through the use of a couple props. By default, modals are "medium" sized with the options to be `large` or `extra-large`. These control the max width of your modal on non-mobile devices.
 
 ### Large
+<proton-example>
+<ClientOnly>
+<p-button v-modal:example-3>Launch Large Modal</p-button>
+
+<p-modal name="example-3" title="Large" large>Hello World!</p-modal>
+</ClientOnly>
+
+<template slot="code">
+
 ```html
-<p-modal name="example" large>
+<p-button v-modal:example-3>Launch Large Modal</p-input>
+
+<p-modal name="example-3" title="Large" large>
     Hello World!
 </p-modal>
 ```
 
+</template>
+</proton-example>
+
 ### Extra Large
+<proton-example>
+<ClientOnly>
+<p-button v-modal:example-4>Launch Extra Large Modal</p-button>
+
+<p-modal name="example-4" title="Extra Large" extra-large>Hello World!</p-modal>
+</ClientOnly>
+
+<template slot="code">
+
 ```html
-<p-modal name="example" extra-large>
+<p-button v-modal:example-4>Launch Extra Large Modal</p-input>
+
+<p-modal name="example-4" title="Extra Large" extra-large>
     Hello World!
 </p-modal>
 ```
+
+</template>
+</proton-example>
 
 ## Visibility
 To toggle the visibility of a modal instance, we recommend using the `v-modal` directive while referencing your modal's `name` property. The `v-modal` directive can be used on any clickable entity.
 
 ```html
-<p-button v-modal:example>Open Modal<p-button>
-
-<p-modal name="example" extra-large>
-    Hello World!
-</p-modal>
+<a href="#" v-modal:example>Open Modal</a>
 ```
 
 ## Passing Data

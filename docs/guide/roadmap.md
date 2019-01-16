@@ -23,13 +23,15 @@ Proton UI is in active development and has not reached a stable release just yet
 - Tooltip
 
 ## In Progress
-- Banner
+- Collapse
 - Toast
 
 ## To-Do
-- Chip
+- Banner
 - List
     - [Draggable](https://shopify.github.io/draggable)
+- Repeater
+- Tag
 - WYSIWYG
     - Ability to configure which WYSIWYG editor to use:
     - [Redactor](https://imperavi.com/redactor)

@@ -4,38 +4,78 @@ title: Input
 
 # Input
 
-## Default
+## Examples
+<proton-example>
+<p-input name="full_name"></p-input>
+
+<template slot="code">
+
 ```html
 <p-input name="full_name"></p-input>
 ```
 
+</template>
+</proton-example>
+
 ## Label
 Add a label to the input with the `label` property.
+
+<proton-example>
+<p-input name="full_name" label="Full Name"></p-input>
+
+<template slot="code">
 
 ```html
 <p-input name="full_name" label="Full Name"></p-input>
 ```
 
+</template>
+</proton-example>
+
 ## Placeholder
 Add a placeholder to the input with the `placeholder` property.
+
+<proton-example>
+<p-input name="full_name" placeholder="Full Name"></p-input>
+
+<template slot="code">
 
 ```html
 <p-input name="full_name" placeholder="Full Name"></p-input>
 ```
 
+</template>
+</proton-example>
+
 ## Help
 Add help text below the input with the `help` property.
+
+<proton-example>
+<p-input name="full_name" help="Please put in your full name."></p-input>
+
+<template slot="code">
 
 ```html
 <p-input name="full_name" help="Please put in your full name."></p-input>
 ```
 
+</template>
+</proton-example>
+
 ## Validation Errors and Messaging
 Add a validation message that can be toggled with the `error-message` and `has-error` properties.
+
+<proton-example>
+<p-input name="full_name" help="Please put in your full name." error-message="Your full name is required." :has-error="true"></p-input>
+
+<template slot="code">
 
 ```html
 <p-input name="full_name" help="Please put in your full name." error-message="Your full name is required." :has-error="true"></p-input>
 ```
+
+</template>
+</proton-example>
 
 ## Props
 | Name | Type | Description | Options | Default |

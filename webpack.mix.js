@@ -14,8 +14,12 @@ const tailwindcss = require('tailwindcss')
 
 mix.js('src/index.js', 'dist/proton.js')
     .sass('src/sass/proton.scss', 'dist/proton.css')
+    .sass('src/sass/_preflight.scss', 'dist/proton-preflight.css')
     .sass('src/sass/_components.scss', 'dist/proton-components.css')
+    .sass('src/sass/_utilities.scss', 'dist/proton-utilities.css')
+    .copy('dist/proton-preflight.css', 'docs/.vuepress/public')
     .copy('dist/proton-components.css', 'docs/.vuepress/public')
+    .copy('dist/proton-utilities.css', 'docs/.vuepress/public')
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.js') ],

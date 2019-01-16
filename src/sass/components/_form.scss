@@ -98,8 +98,10 @@ select {
     }
 }
 
-.form__group {
-    @apply .flex .flex-wrap .items-center .w-full .mb-6;
+.form__group,
+.form__radio-group,
+.form__checkbox-group {
+    @apply .flex .flex-wrap .items-center .w-full .mb-6 .border-0;
 }
 
 .input__group {
