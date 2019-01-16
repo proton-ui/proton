@@ -182,6 +182,31 @@
   color: #fff;
 }
 
+.smooth-enter-active,
+.smooth-leave-active {
+  transition: max-height .5s;
+}
+
+.smooth-enter,
+.smooth-leave-to {
+  max-height: 0;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.in {
+  display: block;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height .377s ease;
+}
+
 .dropdown {
   position: relative;
 }

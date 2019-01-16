@@ -11,6 +11,7 @@ Proton UI is in active development and has not reached a stable release just yet
 - Charts
     - [Frappe Charts](https://frappe.io/charts)
 - Checkbox
+- Collapse
 - DataTable
 - Dropdown
 - Input
@@ -23,7 +24,6 @@ Proton UI is in active development and has not reached a stable release just yet
 - Tooltip
 
 ## In Progress
-- Collapse
 - Toast
 
 ## To-Do
