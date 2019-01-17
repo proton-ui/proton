@@ -1289,6 +1289,93 @@ select.form__control {
   border-color: #dae1e7;
 }
 
+.toast {
+  padding: .5rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  align-items: center;
+  line-height: 1;
+  display: flex;
+  position: fixed;
+  border-radius: 9999px;
+  background-color: #22292f;
+  color: #f8fafc;
+  z-index: 50;
+  bottom: 25px;
+  left: 25px;
+}
+
+.toast__badge {
+  display: flex;
+  border-radius: 9999px;
+  background-color: #dae1e7;
+  text-transform: uppercase;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: .75rem;
+  font-weight: 700;
+  margin-right: .25rem;
+}
+
+.toast__message {
+  margin-left: .5rem;
+  margin-right: .5rem;
+  font-size: .875rem;
+  text-align: left;
+  flex: 1 1 auto;
+}
+
+.toast--dark {
+  background-color: #22292f;
+  color: #f8fafc;
+}
+
+.toast--dark > .toast__badge {
+  background-color: #3d4852;
+  color: #fff;
+}
+
+.toast--info {
+  background-color: #9561e2;
+  color: #21183c;
+}
+
+.toast--info > .toast__badge {
+  background-color: #d6bbfc;
+  color: #382b5f;
+}
+
+.toast--success {
+  background-color: #38c172;
+  color: #0f2f21;
+}
+
+.toast--success > .toast__badge {
+  background-color: #a2f5bf;
+  color: #1a4731;
+}
+
+.toast--warning {
+  background-color: #ffed4a;
+  color: #453411;
+}
+
+.toast--warning > .toast__badge {
+  background-color: #fff9c2;
+  color: #684f1d;
+}
+
+.toast--danger {
+  background-color: #ef5753;
+  color: #3b0d0c;
+}
+
+.toast--danger > .toast__badge {
+  background-color: #f9acaa;
+  color: #621b18;
+}
+
 .toggle {
   position: relative;
   display: inline-flex;

@@ -36,6 +36,7 @@ module.exports = {
                     { text: 'Select', link: '/guide/components/select' },
                     { text: 'Tabs', link: '/guide/components/tabs' },
                     { text: 'Textarea', link: '/guide/components/textarea' },
+                    { text: 'Toast', link: '/guide/components/toast' },
                     { text: 'Toggle', link: '/guide/components/toggle' },
                     { text: 'Tooltip', link: '/guide/components/tooltip' },
                 ]
@@ -70,6 +71,7 @@ module.exports = {
                     '/guide/components/select',
                     '/guide/components/tabs',
                     '/guide/components/textarea',
+                    '/guide/components/toast',
                     '/guide/components/toggle',
                     '/guide/components/tooltip',
                 ],
