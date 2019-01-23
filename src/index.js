@@ -1,11 +1,16 @@
 import * as Components from './components'
 import * as Directives from './directives'
+import EventBusPlugin from './support/eventbus'
 
 const moment = require('moment')
 
 const Proton = {
     install(Vue) {
-        Vue.prototype.moment = moment
+        Vue.use(EventBusPlugin)
+
+        Vue.prototype.moment = function() {
+            return moment
+        }
 
         Object.values(Components).forEach((Component) => {
             Vue.use(Component)

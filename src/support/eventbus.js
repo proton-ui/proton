@@ -1,5 +1,13 @@
-import Vue from 'vue'
+let EventBusPlugin = {}
 
-const EventBus = new Vue
+EventBusPlugin.install = function(Vue) {
+    let EventBus = new Vue
 
-export default EventBus
+    Object.defineProperty(Vue.prototype, '$proton', {
+        get() {
+            return EventBus
+        },
+    })
+}
+
+export default EventBusPlugin

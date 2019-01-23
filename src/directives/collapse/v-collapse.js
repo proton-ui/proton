@@ -3,7 +3,7 @@ import EventBus from '../../support/eventbus'
 function bind(el, binding, vnode) {
     
     el.addEventListener('click', (e) => {
-        EventBus.$emit('toggle-collapse-' + binding.arg)
+        vnode.context.$proton.$emit('toggle-collapse-' + binding.arg)
     })
 }
 

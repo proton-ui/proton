@@ -42,7 +42,7 @@
             },
 
             listenForDirective() {
-                EventBus.$on('toggle-collapse-' + this.name, () => {
+                this.$proton.$on('toggle-collapse-' + this.name, () => {
                     this.toggle()
                 })
             },

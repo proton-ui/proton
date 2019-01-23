@@ -14,8 +14,6 @@
 </template>
 
 <script>
-    import EventBus from '../../support/eventbus'
-
     export default {
         name: 'p-toast',
 
@@ -60,7 +58,7 @@
             },
 
             listenForDirective() {
-                EventBus.$on('toast', (toast) => {
+                this.$proton.$on('toast', (toast) => {
                     this.level = toast.level
 
                     this.toast(toast.message)

@@ -28,7 +28,7 @@
 
 <script>
     import _ from 'lodash'
-    import EventBus from '../../support/eventbus'
+    // import EventBus from '../../support/eventbus'
 
     export default {
         name: 'p-modal',
@@ -140,7 +140,7 @@
             },
 
             listenForDirective() {
-                EventBus.$on('toggle-modal-' + this.name, (data) => {
+                this.$proton.$on('toggle-modal-' + this.name, (data) => {
                     this.toggle()
                     this.data = data
                 })
