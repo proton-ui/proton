@@ -1,25 +1,25 @@
 <template>
-    <div class="modal--overlay" v-if="shouldShow">
-        <div class="modal" :class="{'modal--large': large, 'modal--x-large': extraLarge}" v-click-outside="clickedOutside">
+    <div class="modal--overlay" v-if="model">
+        <div class="modal" :class="styles" v-click-outside="clickedOutside">
             <div class="modal__header" v-if="! noHeader">
                 <slot name="header" :data="data">
-                    <div class="modal__header--title" >
+                    <div class="modal__header--title">
                         <span v-if="title" v-html="title"></span>
                     </div>
 
                     <div>
-                        <a href="#" class="modal__header--close-button" @click.prevent="dismiss" v-if="! noCloseButton">&times;</a>
+                        <a href="#" class="modal__header--close-button" @click.prevent="close" v-if="! noCloseButton">&times;</a>
                     </div>
                 </slot>
             </div>
 
-            <div class="modal__body">
+            <div class="modal__body" :class="{ 'modal__body--flush': flush }">
                 <slot :data="data"></slot>
             </div>
 
             <div class="modal__footer" v-if="! noFooter">
                 <slot name="footer" :data="data">
-                    <p-button @click="dismiss">Close</p-button>
+                    <p-button @click="close">Close</p-button>
                 </slot>
             </div>
         </div>
@@ -27,18 +27,37 @@
 </template>
 
 <script>
-    import _ from 'lodash'
-    // import EventBus from '../../support/eventbus'
-
     export default {
         name: 'p-modal',
 
         data() {
             return {
-                shouldShow: this.show,
-                loaded: this.show,
+                model: this.value,
                 data: null,
+
+                themes: {
+                    default: '',
+                    primary: 'modal--primary',
+                    secondary: 'modal--secondary',
+                    info: 'modal--info',
+                    success: 'modal--success',
+                    warning: 'modal--warning',
+                    danger: 'modal--danger',
+                    dark: 'modal--dark',
+                },
             }
+        },
+
+        computed: {
+            styles() {
+                let styles = {}
+
+                styles['modal--large'] = this.large
+                styles['modal--x-large'] = this.extraLarge
+                styles[this.themes[this.theme]] = true
+
+                return styles
+            },
         },
 
         props: {
@@ -52,7 +71,7 @@
                 type: String,
             },
 
-            show: {
+            value: {
                 required: false,
                 type: Boolean,
                 default: false,
@@ -99,34 +118,43 @@
                 type: Boolean,
                 default: false,
             },
+
+            flush: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            theme: {
+                required: false,
+                type: String,
+                default: 'default',
+            },
         },
 
         methods: {
-            dismiss() {
-                if (this.loaded) {
-                    this.shouldShow = false
-                    this.loaded = false
-                }
+            open() {
+                this.model = true
+            },
+
+            close() {
+                this.model = false
             },
 
             toggle() {
-                this.shouldShow = ! this.shouldShow
-
-                if (this.shouldShow) {
-                    let vm = this
-
+                if (! this.value) {
                     setTimeout(() => {
-                        this.loaded = true
+                        this.open()
                     }, 100)
                 } else {
-                    this.loaded = false
+                    this.close()
                 }
             },
 
             listenForEscape() {
                 const escapeHandler = (e) => {
-                    if (e.key === 'Escape' && this.shouldShow) {
-                        this.dismiss()
+                    if (e.key === 'Escape' && this.model) {
+                        this.close()
                     }
                 }
 
@@ -148,18 +176,26 @@
 
             clickedOutside() {
                 if (! this.noOutsideClose) {
-                    this.dismiss()
+                    this.close()
                 }
             },
         },
 
         watch: {
-            shouldShow: {
+            value(value) {
+                this.model = !!value
+            },
+
+            model: {
                 immediate: true,
-                handler: (shouldShow) => {
-                    if (shouldShow) {
+                handler: function(model) {
+                    this.$emit('input', model)
+
+                    if (model) {
+                        this.$proton.$emit('modal-opened', this.name)
                         document.body.style.setProperty('overflow', 'hidden')
                     } else {
+                        this.$proton.$emit('modal-closed', this.name)
                         document.body.style.removeProperty('overflow')
                     }
                 }
