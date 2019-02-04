@@ -99,10 +99,42 @@ Modals have a few sizing options, each togglable through the use of a couple pro
 </proton-example>
 
 ## Visibility
+### Toggle Event
 To toggle the visibility of a modal instance, we recommend using the `v-modal` directive while referencing your modal's `name` property. The `v-modal` directive can be used on any clickable entity.
 
 ```html
 <a href="#" v-modal:example>Open Modal</a>
+```
+
+### v-model
+You may also toggle the visibility of modals through the `v-model` directive. This is useful if you are wrapping your modals within their own components. Sometimes it's nice to keep everything nice and tidy :metal:
+
+```html
+<template>
+    <div>
+        <a href="#" @click.prevent="toggle">Toggle Me!</a>
+
+        <p-modal name="example" v-model="show">
+            ...
+        </p-modal>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                show: false,
+            }
+        },
+
+        methods: {
+            toggle() {
+                this.show = !this.show
+            }
+        }
+    }
+</script>
 ```
 
 ## Passing Data
@@ -136,6 +168,7 @@ let data = {
 | `show` | `Boolean` | Set the initial visibility state of the modal. | true, false | false |
 | `large` | `Boolean` | If the modal should be large in size. | true, false | false |
 | `extra-large` | `Boolean` | If the modal should be extra large in size. | true, false | false |
+| `flush` | `Boolean` | If the modal body should be flush (no padding) to the border. | true, false | false |
 | `no-header` | `Boolean` | Disable the modal header section completely. | true, false | false |
 | `no-footer` | `Boolean` | Disable the modal footer section completely. | true, false | false |
 | `no-close-button` | `Boolean` | Disable the close button in the header of the modal. | true, false | false |

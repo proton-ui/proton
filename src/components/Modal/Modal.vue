@@ -142,7 +142,7 @@
             },
 
             toggle() {
-                if (! this.value) {
+                if (! this.model) {
                     setTimeout(() => {
                         this.open()
                     }, 100)

@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="datatable card">
         <p-loader v-if="loading"></p-loader>
 
         <div class="card__body">
@@ -8,10 +8,10 @@
             <form action="#" @submit.prevent="getRecords">
                 <label for="column" class="form__label">Filter</label>
 
-                <div class="row" style="margin-bottom: 0;">
+                <div class="row mb-0">
                     <div class="col sm:w-1/4">
                         <div class="relative">
-                            <p-select name="column" v-model="filter.column" :options="columns">
+                            <p-select name="column" v-model="filter.column" :options="filters">
                             </p-select>
 
                             <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -81,40 +81,7 @@
                     <label for="limit" class="form__label">Records Per Page</label>
 
                     <div class="relative">
-                        <p-select name="limit" v-model="pagination.perPage" @change="changeLimit" :options="[
-                            {
-                                label: '1',
-                                value: 1,
-                            },
-                            {
-                                label: '5',
-                                value: 5,
-                            },
-                            {
-                                label: '10',
-                                value: 10,
-                            },
-                            {
-                                label: '25',
-                                value: 25,
-                            },
-                            {
-                                label: '50',
-                                value: 50,
-                            },
-                            {
-                                label: '100',
-                                value: 100,
-                            },
-                            {
-                                label: '500',
-                                value: 500,
-                            },
-                            {
-                                label: '1000',
-                                value: 1000,
-                            },
-                        ]">
+                        <p-select name="limit" v-model="pagination.perPage" @change="changeLimit" :options="limits">
                         </p-select>
 
                         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -130,7 +97,8 @@
                 <thead>
                     <tr>
                         <th v-for="(column, index) in displayable" :key="index">
-                            <span class="sortable" @click="sortRecordsBy(column)">{{ column_names[column] || column }}</span>
+                            <span class="sortable" v-if="isSortable(column)" @click="sortRecordsBy(column)">{{ column_names[column] || column }}</span>
+                            <span v-else>{{ column_names[column] || column }}</span>
 
                             <div
                                 class="arrow"
@@ -138,7 +106,7 @@
                                     'arrow--asc': (sort.order === 'asc'),
                                     'arrow--desc': (sort.order === 'desc'),
                                 }"
-                                v-if="sort.key === column">
+                                v-if="sort.key === column && isSortable(column)">
                             </div>
                         </th>
                         <th>&nbsp;</th>
@@ -170,7 +138,15 @@
                     :current-page="this.pagination.currentPage"
                 ></p-pagination>
             </div>
-        </div>        
+        </div>
+
+        <div v-else>
+            <slot name="empty-state">
+                <div class="card__body text-center">
+                    <h3>No results found.</h3>
+                </div>
+            </slot>
+        </div>
     </div>
 </template>
 
@@ -187,6 +163,8 @@
                 loading: true,
                 displayable: [],
                 column_names: [],
+                sortable: [],
+                filterable: [],
                 records: [],
                 search: '',
 
@@ -222,10 +200,28 @@
                 })
 
                 return columns
+            },
+
+            filters() {
+                let filters = []
+
+                _.forEach(this.filterable, (filter) => {
+                    filters.push({
+                        'label': this.column_names[filter],
+                        'value': filter,
+                    })
+                })
+
+                return filters
             }
         },
 
         props: {
+            name: {
+                required: true,
+                type: String,
+            },
+
             title: {
                 required: false,
                 type: String,
@@ -255,6 +251,46 @@
                 default: 'asc',
             },
 
+            limits: {
+                required: false,
+                type: Array,
+                default: function() {
+                    return [
+                    {
+                        label: '1',
+                        value: 1,
+                    },
+                    {
+                        label: '5',
+                        value: 5,
+                    },
+                    {
+                        label: '10',
+                        value: 10,
+                    },
+                    {
+                        label: '25',
+                        value: 25,
+                    },
+                    {
+                        label: '50',
+                        value: 50,
+                    },
+                    {
+                        label: '100',
+                        value: 100,
+                    },
+                    {
+                        label: '500',
+                        value: 500,
+                    },
+                    {
+                        label: '1000',
+                        value: 1000,
+                    },
+                ]}
+            },
+
             perPage: {
                 required: false,
                 type: Number,
@@ -268,10 +304,6 @@
             },
         },
 
-        mounted() {
-            this.getRecords()
-        },
-
         methods: {
             getRecords() {
                 this.loading = true
@@ -279,12 +311,18 @@
                 return axios.get(`${this.endpoint}?${this.getQueryParameters()}`).then((response) => {
                     this.records = response.data.records.data
                     this.displayable = response.data.displayable
+                    this.sortable = response.data.sortable
+                    this.filterable = response.data.filterable
                     this.column_names = response.data.column_names
                     this.pagination.totalRecords = response.data.records.total
                     this.pagination.totalPages = response.data.records.last_page
 
                     this.loading = false
                 })
+            },
+
+            isSortable(column) {
+                return _.includes(this.sortable, column)
             },
 
             getQueryParameters() {
@@ -323,6 +361,18 @@
                     this.getRecords()
                 })
             },
+
+            listenForEvents() {
+                this.$proton.$on('refresh-datatable-' + this.name, (data) => {
+                    this.getRecords()
+                })
+            }
+        },
+
+        created() {
+            this.getRecords()
+
+            this.listenForEvents()
         }
     }
 </script>
