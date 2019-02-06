@@ -120,7 +120,7 @@
                                 {{ record[column] }}
                             </slot>
                         </td>
-                        <td class="text-right">
+                        <td class="text-right" v-if="!noActions">
                             <slot name="actions" :record="record">
                                 <a href="#" class="text-danger hover:text-danger-dark" @click.prevent="destroy(record.id)">Delete</a>
                             </slot>
@@ -295,6 +295,12 @@
                 required: false,
                 type: Number,
                 default: 10,
+            },
+
+            noActions: {
+                required: false,
+                type: Boolean,
+                default: false,
             },
         },
 
