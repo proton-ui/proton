@@ -16,15 +16,17 @@ Proton UI is in active development and has not reached a stable release just yet
 - Dropdown
 - Input
 - Modal
+- Pagination
 - Radio
 - Select
 - Tabs
 - Textarea
+- Toast
 - Toggle
 - Tooltip
 
 ## In Progress
-- Toast
+- Slug
 
 ## To-Do
 - Banner

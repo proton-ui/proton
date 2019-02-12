@@ -16,9 +16,11 @@
             :placeholder="placeholder"
             :readonly="readonly"
             :disabled="disabled"
-            v-model.lazy="slug"
             :autocomplete="autocomplete"
             :autofocus="autofocus"
+            v-model.lazy="model"
+            ref="input"
+            @blur="onBlur"
         >
 
         <div class="form__control--meta" v-if="help || errorMessage">
@@ -36,7 +38,19 @@
 
         data() {
             return {
-                modified: null,
+                shouldSlugify: false,
+            }
+        },
+
+        computed: {
+            model: {
+                get() {
+                    return this.value
+                },
+
+                set(value) {
+                    this.$emit('input', this.slugify(value))
+                }
             }
         },
 
@@ -94,44 +108,37 @@
                 type: String,
                 default: '-',
             },
-            ampersand: {
+            watch: {
                 required: false,
                 type: String,
-                default: 'and',
+                default: '',
             },
         },
 
-        computed: {
-            isModified() {
-                return this.modified !== null
+        watch: {
+            watch(value) {
+                if (this.shouldSlugify) {
+                    this.model = this.slugify(value)
+                }
+
+                this.updateState()
             },
 
-            slug: {
-                set(value) {
-                    if (value === '') {
-                        value = null
-                    }
+            value(value) {
+                this.model = value
 
-                    this.modified = value
-                },
-
-                get() {
-                    let slug = this.modified
-
-                    if (! this.isModified) {
-                        slug = this.slugify(this.value)
-                    } else {
-                        slug = this.slugify(slug)
-                    }
-
-                    this.$emit('change', slug)
-
-                    return slug
-                }
-            }
+                this.updateState()
+            },
         },
 
         methods: {
+            updateState() {
+                let modelIsNull = this.model === null
+                let modelEqualsWatch = this.model === this.slugify(this.watch)
+
+                this.shouldSlugify = modelIsNull || modelEqualsWatch
+            },
+
             slugify(text) {
                 if (text) {
                     const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿỳýœæŕśńṕẃǵǹḿǘẍźḧ'
@@ -148,7 +155,19 @@
                 }
 
                 return null
+            },
+
+            onBlur() {
+                if (this.model == null) {
+                    this.model = this.slugify(this.watch)
+                }
             }
+        },
+
+        mounted() {
+            this.model = this.value
+
+            this.updateState()
         }
     }
 </script>

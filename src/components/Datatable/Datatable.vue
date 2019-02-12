@@ -131,11 +131,9 @@
         
             <div class="card__body text-right">
                 <p-pagination
-                    @pagechanged="changePage($event)"
-                    :total-pages="this.pagination.totalPages"
-                    :total="this.pagination.totalRecords"
-                    :per-page="this.pagination.perPage"
-                    :current-page="this.pagination.currentPage"
+                    @input="changePage($event)"
+                    :total="this.pagination.totalPages"
+                    :value="this.pagination.currentPage"
                 ></p-pagination>
             </div>
         </div>

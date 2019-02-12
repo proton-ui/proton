@@ -11,8 +11,6 @@ There are **a lot** of options with this library. So while we will be going over
 
 ---
 
-
-
 ## Props
 | Name | Type | Description | Options | Default |
 |------|------|-------------|---------|---------|

@@ -51,7 +51,7 @@
                     <li class="form__select-option"
                         :class="{'form__select-option--selected': isSelected(option), 'form__select-option--highlighted': isHighlighted(index)}"
                         v-for="(option, index) in filteredOptions"
-                        :key="option.value || option"
+                        :key="index"
                         @click="select(option)"
                     >{{ option.label || option }}</li>
                 </ul>
@@ -177,10 +177,15 @@
                         return this.model
                     }
 
-                    if (typeof _.head(this.options) === 'object') {
+                    if (typeof _.head(this.options) === 'object') {                        
                         let index = _.findIndex(this.options, (option) => {
-
-                            return option.value == (this.model.value || this.model)
+                            if (typeof this.model === 'object') {
+                                return option.value === this.model.value
+                            } else {
+                                return option.value === this.model
+                            }
+                            
+                            // return option.value === (this.model.value || this.model)
                         })
 
                         return this.options[index]
@@ -214,7 +219,9 @@
             },
 
             value(value) {
-                this.select(value)
+                if (value !== null) {
+                    this.select(value)
+                }
             },
         },
 
@@ -260,8 +267,16 @@
             },
 
             select(option) {
-                this.$emit('input', option.value || option)
-                this.$emit('change', option.value || option)
+                let value = null
+
+                if (typeof option === 'object') {
+                    value = option['value']
+                } else {
+                    value = option
+                }
+
+                this.$emit('input', value)
+                this.$emit('change', value)
                 this.selected = option
                 this.close()
             },

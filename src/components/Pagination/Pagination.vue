@@ -62,15 +62,6 @@
     export default {
         name: 'p-pagination',
 
-        data() {
-            return {
-                pagination: {
-                    current: this.currentPage,
-                    perPage: this.perPage,
-                },
-            }
-        },
-
         props: {
             maxVisiblePages: {
                 required: false,
@@ -78,39 +69,39 @@
                 default: 3,
             },
 
-            totalPages: {
-                required: true,
-                type: Number,
-            },
-
             total: {
                 required: true,
                 type: Number,
             },
 
-            perPage: {
-                required: true,
-                type: Number,
-            },
-
-            currentPage: {
+            value: {
                 required: true,
                 type: Number,
             },
         },
 
         computed: {
+            current: {
+                get() {
+                    return this.value
+                },
+
+                set(value) {
+                    this.$emit('input', value)
+                }
+            },
+
             startPage() {
                 let startPage = 1
 
-                if (this.currentPage === 1) {
+                if (this.current === 1) {
                     return startPage
                 }
 
-                if (this.currentPage === this.totalPages) {
-                    startPage = this.totalPages - this.maxVisiblePages + 1
+                if (this.current === this.total) {
+                    startPage = this.total - this.maxVisiblePages + 1
                 } else {
-                    startPage = this.currentPage - 1
+                    startPage = this.current - 1
                 }
 
                 if (startPage === 0) {
@@ -121,7 +112,7 @@
             },
 
             endPage() {
-                return Math.min(this.startPage + this.maxVisiblePages - 1, this.totalPages)
+                return Math.min(this.startPage + this.maxVisiblePages - 1, this.total)
             },
 
             pages() {
@@ -130,7 +121,7 @@
                 for (let i = this.startPage; i <= this.endPage; i += 1) {
                     range.push({
                         name: i,
-                        isDisabled: i === this.currentPage
+                        isDisabled: i === this.current
                     })
                 }
 
@@ -138,37 +129,41 @@
             },
 
             isOnFirstPage() {
-                return this.currentPage === 1
+                return this.current === 1
             },
 
             isOnLastPage() {
-                return this.currentPage === this.totalPages
+                return this.current === this.total
             },
         },
 
         methods: {
             onClickFirstPage() {
-                this.$emit('pagechanged', 1)
+                this.$emit('input', 1)
+                this.$emit('first')
             },
 
             onClickPreviousPage() {
-                this.$emit('pagechanged', this.currentPage - 1)
+                this.$emit('input', this.current - 1)
+                this.$emit('previous')
             },
 
             onClickPage(page) {
-                this.$emit('pagechanged', page)
+                this.$emit('input', page)
             },
 
             onClickNextPage() {
-                this.$emit('pagechanged', this.currentPage + 1)
+                this.$emit('input', this.current + 1)
+                this.$emit('next')
             },
 
             onClickLastPage() {
-                this.$emit('pagechanged', this.totalPages)
+                this.$emit('input', this.total)
+                this.$emit('last')
             },
 
             isPageActive(page) {
-                return this.currentPage === page
+                return this.current === page
             },
         }
     }
