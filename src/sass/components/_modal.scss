@@ -1,5 +1,5 @@
 .modal {
-    @apply .rounded .shadow-md .bg-white .relative .w-full .max-w-md .m-auto .z-50;
+    @apply .rounded .shadow-md .bg-white .relative .w-full .max-w-md .m-auto;
 
     &--large {
         @apply .max-w-lg;
@@ -10,7 +10,7 @@
     }
 
     &--overlay {
-        @apply .fixed .pin .z-50 .overflow-auto .bg-smoke-light .flex .py-20 .px-6;
+        @apply .fixed .pin .overflow-auto .bg-smoke-light .flex .py-20 .px-6;
     }
 
     &__body {

@@ -1,6 +1,6 @@
 <template>
-    <div class="modal--overlay" v-if="model">
-        <div class="modal" :class="styles" v-click-outside="clickedOutside">
+    <div class="modal--overlay" v-show="isActive" :style="{ zIndex: activeZIndex }">
+        <div class="modal" :class="styles" v-click-outside="clickedOutside" :style="{ zIndex: activeZIndex }" ref="stackable">
             <div class="modal__header" v-if="! noHeader">
                 <slot name="header" :data="data">
                     <div class="modal__header--title">
@@ -8,7 +8,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="modal__header--close-button" @click.prevent="close" v-if="! noCloseButton">&times;</a>
+                        <a href="#" class="modal__header--close-button" @click.stop="close" v-if="! noCloseButton">&times;</a>
                     </div>
                 </slot>
             </div>
@@ -19,7 +19,7 @@
 
             <div class="modal__footer" v-if="! noFooter">
                 <slot name="footer" :data="data">
-                    <p-button @click="close">Close</p-button>
+                    <p-button @click.stop="close">Close</p-button>
                 </slot>
             </div>
         </div>
@@ -27,13 +27,20 @@
 </template>
 
 <script>
+    import stackable from '../../mixins/stackable'
+
     export default {
         name: 'p-modal',
 
+        mixins: [stackable],
+
         data() {
             return {
-                model: this.value,
                 data: null,
+                isActive: !!this.value,
+                isLoaded: !!this.value,
+                stackClass: 'modal--active',
+                stackMinZIndex: 200,
 
                 themes: {
                     default: '',
@@ -55,6 +62,7 @@
                 styles['modal--large'] = this.large
                 styles['modal--x-large'] = this.extraLarge
                 styles[this.themes[this.theme]] = true
+                styles['modal--active'] = this.isActive
 
                 return styles
             },
@@ -134,18 +142,31 @@
 
         methods: {
             open() {
-                this.model = true
+                this.isActive = true
+                this.$proton.$emit('modal-opened', this.name)
+                document.body.style.setProperty('overflow', 'hidden')
+
+                setTimeout(() => {
+                    this.isLoaded = true
+                }, 100)
             },
 
             close() {
-                this.model = false
+                this.isActive = false
+                this.isLoaded = false
+
+                this.$proton.$emit('modal-closed', this.name)
+
+                this.$nextTick(function() {
+                    if (! this.hasStack()) {
+                        document.body.style.removeProperty('overflow')
+                    }
+                })
             },
 
             toggle() {
-                if (! this.model) {
-                    setTimeout(() => {
-                        this.open()
-                    }, 100)
+                if (! this.isActive) {
+                    this.open()
                 } else {
                     this.close()
                 }
@@ -153,7 +174,7 @@
 
             listenForEscape() {
                 const escapeHandler = (e) => {
-                    if (e.key === 'Escape' && this.model) {
+                    if (e.key === 'Escape' && this.isActive && this.isActiveStack()) {
                         this.close()
                     }
                 }
@@ -175,29 +196,24 @@
             },
 
             clickedOutside() {
-                if (! this.noOutsideClose) {
+                if (! this.noOutsideClose && this.isLoaded && this.isActiveStack()) {
                     this.close()
                 }
             },
         },
 
         watch: {
-            value(value) {
-                this.model = !!value
+            value(val) {
+                this.isActive = !!val
             },
 
-            model: {
-                immediate: true,
-                handler: function(model) {
-                    this.$emit('input', model)
+            isActive(val) {
+                !!val !== this.value && this.$emit('input', val)
 
-                    if (model) {
-                        this.$proton.$emit('modal-opened', this.name)
-                        document.body.style.setProperty('overflow', 'hidden')
-                    } else {
-                        this.$proton.$emit('modal-closed', this.name)
-                        document.body.style.removeProperty('overflow')
-                    }
+                if (val) {
+                    this.open()
+                } else {
+                    this.close()
                 }
             },
         },
@@ -206,5 +222,9 @@
             this.listenForEscape()
             this.listenForDirective()
         },
+
+        beforeMount () {
+            this.isActive && this.open()
+        }
     }
 </script>
