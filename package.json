@@ -44,6 +44,7 @@
     "vuepress": "^0.14.8"
   },
   "dependencies": {
-    "@babel/core": "^7.2.2"
+    "@babel/core": "^7.2.2",
+    "@shopify/draggable": "^1.0.0-beta.8"
   }
 }
