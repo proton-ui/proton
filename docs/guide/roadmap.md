@@ -8,8 +8,7 @@ Proton UI is in active development and has not reached a stable release just yet
 ## Completed
 - Button
 - Card
-- Charts
-    - [Frappe Charts](https://frappe.io/charts)
+- Charts (powered by [Frappe Charts](https://frappe.io/charts))
 - Checkbox
 - Collapse
 - DataTable
@@ -19,19 +18,19 @@ Proton UI is in active development and has not reached a stable release just yet
 - Pagination
 - Radio
 - Select
+- Sortable (powered by [Draggable](https://shopify.github.io/draggable/)) <Badge text="beta.9"/>
 - Tabs
 - Textarea
 - Toast
 - Toggle
 - Tooltip
+- Treeview <Badge text="beta.9"/>
 
 ## In Progress
 - Slug
 
 ## To-Do
 - Banner
-- List
-    - [Draggable](https://shopify.github.io/draggable)
 - Repeater
 - Tag
 - WYSIWYG

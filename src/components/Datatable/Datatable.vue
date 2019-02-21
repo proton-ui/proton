@@ -5,7 +5,7 @@
         <div class="card__body">
             <h2 v-if="title">{{ title }}</h2>
             
-            <form action="#" @submit.prevent="getRecords">
+            <form action="#" @submit.prevent="getRecords" v-if="! noFilters">
                 <label for="column" class="form__label">Filter</label>
 
                 <div class="row mb-0">
@@ -68,7 +68,7 @@
                 </div>
             </form>
 
-            <div class="row" style="margin-bottom: 0;">
+            <div class="row" style="margin-bottom: 0;" v-if="! noSearch">
                 <div class="col sm:w-5/6">
                     <p-input
                         name="search"
@@ -77,7 +77,7 @@
                     ></p-input>
                 </div>
 
-                <div class="col sm:w-1/6">
+                <div class="col sm:w-1/6" v-if="! noPagination">
                     <label for="limit" class="form__label">Records Per Page</label>
 
                     <div class="relative">
@@ -129,7 +129,7 @@
                 </tbody>
             </table>
         
-            <div class="card__body text-right">
+            <div class="card__body text-right" v-if="! noPagination">
                 <p-pagination
                     @input="changePage($event)"
                     :total="this.pagination.totalPages"
@@ -296,6 +296,24 @@
             },
 
             noActions: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noSearch: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noFilters: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+
+            noPagination: {
                 required: false,
                 type: Boolean,
                 default: false,
