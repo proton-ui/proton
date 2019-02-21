@@ -41,6 +41,7 @@ module.exports = {
                     { text: 'Toast', link: '/guide/components/toast' },
                     { text: 'Toggle', link: '/guide/components/toggle' },
                     { text: 'Tooltip', link: '/guide/components/tooltip' },
+                    { text: 'Treeview', link: '/guide/components/treeview' },
                 ]
             }
         ],
@@ -78,6 +79,7 @@ module.exports = {
                     '/guide/components/toast',
                     '/guide/components/toggle',
                     '/guide/components/tooltip',
+                    '/guide/components/treeview',
                 ],
             },
         ],
