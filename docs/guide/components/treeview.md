@@ -17,7 +17,7 @@ Items can be expanded to reveal subitems, if any exist, and collapsed to hide su
 <template slot="code">
 
 ```html
-<p-treeview :items="files"></p-treeview>
+<p-treeview :items="files" v-model="selected"></p-treeview>
 ```
 
 </template>
@@ -54,7 +54,7 @@ When combined with additional data, you can easily customize the presentation of
 <template slot="code">
 
 ```html
-<p-treeview :items="files">
+<p-treeview :items="files" v-model="selected">
     <template slot="prepend" slot-scope="{ item, open }">
         <fa-icon :icon="['fas', open ? 'folder-open' : 'folder']" class="fa-fw mr-2" v-if="! item.file"></fa-icon>
         <fa-icon :icon="['far', 'file-alt']" class="fa-fw mr-2" v-else></fa-icon>
