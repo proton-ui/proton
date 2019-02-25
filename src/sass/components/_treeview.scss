@@ -1,8 +1,12 @@
 .treeview {
-    @apply .list-reset .mb-0;
+    @apply .list-reset;
 
-    &--item {
-        @apply .flex .items-center .align-middle;
+    &--node {
+        @apply .flex .items-center .align-middle .py-2;
+
+        :hover {
+            @apply .cursor-pointer;
+        }
     }
 
     &--toggle {
@@ -17,11 +21,15 @@
         @apply .flex .items-center .leading-tight .align-middle;
     }
 
-    &--item__folder {
+    &--node__folder {
+        // 
+    }
+
+    &--node__selected {
         @apply .font-bold;
     }
 
     &--children {
-        @apply .pl-3 .mb-0;
+        @apply .pl-3;
     }
 }
