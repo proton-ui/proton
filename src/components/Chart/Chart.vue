@@ -11,10 +11,6 @@
         data() {
             return {
                 chart: null,
-                data: {
-                    labels: this.labels,
-                    datasets: this.dataSets,
-                },
                 heatmapData: {
                     dataPoints: this.dataPoints,
                     start: this.startDate,
@@ -22,6 +18,15 @@
                     countLabel: this.countLabel,
                 },
             }
+        },
+
+        computed: {
+            data() {
+                return {
+                    labels: this.labels,
+                    datasets: this.dataSets,
+                }
+            },
         },
 
         props: {
@@ -256,9 +261,23 @@
                 this.chart.updateDataset(datasetValues, index)
             },
 
+            update(data) {
+                this.chart.update(data)
+            },
+
             unbindWindowEvents() {
                 this.chart.unbindWindowEvents()
             },
         },
+
+        watch: {
+            labels: function(newValue, oldValue) {
+                this.update(this.data)
+            },
+
+            dataSets: function(newValue, oldValue) {
+                this.update(this.data)
+            },
+        }
     }
 </script>
