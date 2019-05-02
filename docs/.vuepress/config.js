@@ -43,6 +43,7 @@ module.exports = {
                     { text: 'Toggle', link: '/guide/components/toggle' },
                     { text: 'Tooltip', link: '/guide/components/tooltip' },
                     { text: 'Treeview', link: '/guide/components/treeview' },
+                    { text: 'Upload', link: '/guide/components/upload' },
                 ]
             }
         ],
@@ -82,6 +83,7 @@ module.exports = {
                     '/guide/components/toggle',
                     '/guide/components/tooltip',
                     '/guide/components/treeview',
+                    '/guide/components/upload',
                 ],
             },
         ],

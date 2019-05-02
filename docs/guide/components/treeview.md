@@ -3,7 +3,7 @@ title: Treeview
 ---
 
 # Treeview
-### Present a hierarchical view of information that is easy to navigate and digest.
+Present a hierarchical view of information that is easy to navigate and digest.
 
 ## Examples
 
