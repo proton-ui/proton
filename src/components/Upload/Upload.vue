@@ -23,6 +23,7 @@
                 :name="name"
                 :id="name"
                 :multiple="multiple"
+                :required="required"
                 @change="onFileChange"
             >
             
@@ -70,6 +71,7 @@
             help: String,
             multiple: Boolean,
             accept: String,
+            required: Boolean,
             errorMessage: {
                 required: false,
                 type: String,
