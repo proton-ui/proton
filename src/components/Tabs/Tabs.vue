@@ -1,7 +1,17 @@
 <template>
     <div class="tabs">
         <ul class="tab__list">
-            <li v-for="tab in tabs" :key="tab.name" class="tab" :class="{ 'tab--active': tab.isActive }">
+            <li
+                v-for="tab in tabs"
+                :key="tab.name"
+                class="tab"
+                :class="{ 'tab--active': tab.isActive, 'tab--hovering': isHovering(tab.hash) }"
+                @dragover.prevent="dragOver(tab.hash)"
+                @dragenter.prevent="dragEnter"
+                @dragleave.prevent="dragLeave"
+                @dragend.prevent="dragLeave"
+                @drop.prevent
+            >
                 <a :href="tab.hash" class="tab__link" @click.prevent="selectTab(tab.hash, true)" @focus="selectTab(tab.hash, true)">{{ tab.name }}</a>
             </li>
         </ul>
@@ -20,6 +30,13 @@
             return {
                 tabs: null,
                 foundActiveTab: false,
+                hoveringOver: null,
+                dragOverAt: false,
+                dragEnterAt: false,
+                dragLeaveAt: false,
+                dragEndAt: false,
+                enteredTab: false,
+                hoveringOverFor: false,
             }
         },
 
@@ -29,7 +46,33 @@
             }
         },
 
+        watch: {
+            tabs() {
+                this.findAndSelectTab()
+            },
+
+            dragOverAt() {
+                let start = this.dragEnterAt
+                let end = this.dragOverAt
+                let duration = end - start
+
+                if (duration > 400 && this.enteredTab == false) {
+                    console.log('selecting tab')
+
+                    this.selectTab(this.hoveringOver, true)
+                    
+                    this.enteredTab = true
+                }
+
+                this.hoveringOverFor = duration
+            }
+        },
+
         methods: {
+            isHovering(hash) {
+                return this.hoveringOver == hash
+            },
+
             findTab(hash) {
                 return this.tabs.find((tab) => {
                     return tab.hash == hash
@@ -59,6 +102,40 @@
                     })
                 }
             },
+
+            findAndSelectTab() {
+                _.each(this.tabs, (tab) => {
+                    if (tab.isActive) {
+                        this.selectTab(tab.hash)
+
+                        this.foundActiveTab = true
+
+                        return false
+                    }
+                })
+
+                if (! this.foundActiveTab && this.tabs[0]) {
+                    this.selectTab(this.tabs[0].hash)
+                }
+
+                if (this.$route.hash) {
+                    this.selectTab(this.$route.hash)
+                }
+            },
+
+            dragEnter() {
+                this.dragEnterAt = Date.now()
+                this.enteredTab = false
+            },
+
+            dragOver(hash) {
+                this.dragOverAt = Date.now()
+                this.hoveringOver = hash
+            },
+
+            dragLeave() {
+                this.hoveringOver = null
+            }
         },
 
         created() {
@@ -66,23 +143,7 @@
         },
 
         mounted() {
-            _.each(this.tabs, (tab) => {
-                if (tab.isActive) {
-                    this.selectTab(tab.hash)
-
-                    this.foundActiveTab = true
-
-                    return false
-                }
-            })
-
-            if (! this.foundActiveTab) {
-                this.selectTab(this.tabs[0].hash)
-            }
-
-            if (this.$route.hash) {
-                this.selectTab(this.$route.hash)
-            }
+            this.findAndSelectTab()
         }
     }
 </script>
