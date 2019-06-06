@@ -22,17 +22,9 @@ const Proton = {
     }
 }
 
-// Auto-install plugin
-let GlobalVue = null
-
-if (typeof window !== 'undefined') {
-    GlobalVue = window.Vue
-} else if (typeof global !== 'undefined') {
-    GlobalVue = global.vue
-}
-
-if (GlobalVue) {
-    GlobalVue.use(Proton)
+// Automatic install Proton if Vue has been added to the global scope.
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(Proton)
 }
 
 export default Proton
