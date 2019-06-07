@@ -9,13 +9,12 @@
                 class="form__checkbox"
                 type="checkbox"
                 :name="name"
-                :value="nativeValue"
                 :disabled="disabled"
                 :required="required"
-                :true-value="trueValue"
-                :false-value="falseValue"
                 :indeterminate.prop="indeterminate"
-                v-model="computedValue"
+                :value="nativeValue"
+                v-model="checked"
+                @change="onChange"
             >
             <span class="form__checkbox-label"><slot></slot></span>
         </label>
@@ -28,7 +27,7 @@
 
         data() {
             return {
-                model: this.value,
+                model: false,
             }
         },
 
@@ -74,22 +73,21 @@
         },
 
         computed: {
-            computedValue: {
+            checked: {
                 get() {
-                    return this.model
+                    return this.value
                 },
 
                 set(value) {
                     this.model = value
-                    this.$emit('input', value)
                 }
             }
         },
 
-        watch: {
-            value(value) {
-                this.model = value
-            },
-        },
+        methods: {
+            onChange() {
+                this.$emit('input', this.model)
+            }
+        }
     }
 </script>
