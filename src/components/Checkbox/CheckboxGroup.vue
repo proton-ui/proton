@@ -7,7 +7,7 @@
             v-html="label">
         </label>
 
-        <div :class="{'form__checkbox-group--inline': inline}">
+        <div class="form__checkbox-group--block" :class="{'form__checkbox-group--inline': inline}">
             <slot></slot>
         </div>
 
