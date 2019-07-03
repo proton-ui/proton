@@ -96,7 +96,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th v-for="(column, index) in displayable" :key="index">
+                        <th v-for="(column, index) in displayable" :key="column[primaryKey] || index">
                             <span class="sortable" v-if="isSortable(column)" @click="sortRecordsBy(column)">{{ column_names[column] || column }}</span>
                             <span v-else>{{ column_names[column] || column }}</span>
 
@@ -114,7 +114,7 @@
                 </thead>
 
                 <tbody>
-                    <tr v-for="(record, index) in records" :key="index">                        
+                    <tr v-for="(record, index) in records" :key="record[primaryKey] || index">
                         <td v-for="column in displayable" :key="column">
                             <slot :name="column" :record="record">
                                 {{ record[column] }}
@@ -317,6 +317,11 @@
                 required: false,
                 type: Boolean,
                 default: false,
+            },
+
+            primaryKey: {
+                required: false,
+                type: String,
             },
         },
 
