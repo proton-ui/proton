@@ -8,17 +8,17 @@ export default {
 
     computed: {
         activeZIndex() {
-            if (!this.isActive) {
+            if (! this.isActive) {
                 return this.getZIndex(this.$refs.stackable)
             }
 
-            return this.getMaxZIndex() + 2
+            return this.getMaxZIndex() + 4
         },
     },
 
     methods: {
         getZIndex(element) {
-            if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+            if (! element || element.nodeType !== Node.ELEMENT_NODE) {
                 return 0
             }
 

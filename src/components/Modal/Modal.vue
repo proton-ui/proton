@@ -1,6 +1,6 @@
 <template>
-    <div class="modal--overlay" v-show="isActive" :style="{ zIndex: activeZIndex }">
-        <div class="modal" :class="styles" v-click-outside="clickedOutside" :style="{ zIndex: activeZIndex }" ref="stackable">
+    <div class="modal--overlay" v-show="isActive" :style="{ zIndex: activeZIndex }" @mousedown="clickedOutside">
+        <div class="modal" :class="styles" :style="{ zIndex: activeZIndex }" ref="stackable" @mousedown.stop>
             <div class="modal__header" v-if="! noHeader">
                 <slot name="header" :data="data">
                     <div class="modal__header--title">

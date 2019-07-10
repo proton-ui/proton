@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown">
-        <button class="dropdown__button" @click="toggle" v-click-outside="close" ref="dropdown_button">
+        <button class="dropdown__button" @click.prevent="toggle($event)" v-click-outside="close" ref="dropdown_button">
             <slot></slot>
         </button>
 
@@ -47,8 +47,10 @@
                 this.destroyPopper()
             },
 
-            toggle() {
+            toggle(event) {
                 this.isOpen ? this.close() : this.open()
+
+                this.$emit('click', event)
             },
 
             listenForEscape() {

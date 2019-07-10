@@ -20,7 +20,7 @@ function processDirectiveArguments(bindingValue) {
 function onEvent({ el, event, handler, middleware }) {
     const isClickOutside = event.target !== el && !el.contains(event.target)
 
-    if (!isClickOutside) {
+    if (! isClickOutside) {
         return
     }
 
