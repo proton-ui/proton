@@ -24,6 +24,8 @@
                 @blur="emitValue($event.target.value)"
                 :autocomplete="autocomplete"
                 :autofocus="autofocus"
+                :min="min"
+                :max="max"
             >
             <button class="button ml-2" @click.prevent="increase">
                 <fa-icon icon="plus"></fa-icon> 
@@ -98,6 +100,16 @@
                 required: false,
                 type: String,
                 default: 0
+            },
+            min: {
+                required: false,
+                type: [String, Number],
+                default: ''
+            },
+            max: {
+                required: false,
+                type: [String, Number],
+                default: ''
             }
         },
 
@@ -109,14 +121,18 @@
 
         methods: {
             emitValue(newValue) {
-                console.log(newValue)
                 if(!newValue) {
                     this.inputValue = this.value
                     return
                 }
+                if(this.min && newValue < this.min) {
+                    newValue = this.min
+                }
+                if(this.max && newValue > this.max) {
+                    newValue = this.max
+                }
                 newValue = this.formatNumber(newValue, this.decimals)
                 this.inputValue = newValue
-                console.log(newValue)
                 this.$emit('input', newValue)
             },
 
