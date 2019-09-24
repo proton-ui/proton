@@ -1,0 +1,123 @@
+<template>
+    <div class="form__group">
+        <label
+            class="form__label"
+            :for="name"
+            v-if="label"
+            v-html="label">
+        </label>
+
+        <input
+            class="form__control"
+            :class="{'font-mono': monospaced, 'form__error': hasError}"
+            :id="name"
+            :name="name"
+            type="number"
+            :steps="steps"
+            :placeholder="placeholder"
+            :readonly="readonly"
+            :disabled="disabled"
+            v-model="inputValue"
+            @blur="emitValue($event.target.value)"
+            :autocomplete="autocomplete"
+            :autofocus="autofocus"
+        >
+
+        <div class="form__control--meta" v-if="help || errorMessage">
+            <div class="form__help">
+                <span v-if="help" v-html="help"></span>
+                <span v-if="errorMessage" class="form__error--message" v-html="errorMessage"></span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'p-number',
+
+        props: {
+            name: String,
+            placeholder: String,
+            label: String,
+            help: String,
+            value: {
+                type: String,
+                default: null,
+            },
+            required: {
+                type: Boolean,
+                default: false,
+            },
+            readonly: {
+                type: Boolean,
+                default: false,
+            },
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            monospaced: {
+                type: Boolean,
+                default: false,
+            },
+            hasError: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            errorMessage: {
+                required: false,
+                type: String,
+                default: '',
+            },
+            autocomplete: {
+                required: false,
+                type: String,
+                default: '',
+            },
+            autofocus: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            steps: {
+                required: false,
+                type: Number,
+                default: 1
+            },
+            decimals: {
+                required: false,
+                type: String,
+                default: 0
+            }
+        },
+
+        data() {
+            return {
+                inputValue: null
+            }
+        },
+
+        methods: {
+            emitValue(newValue) {
+                if(!newValue) {
+                    this.inputValue = this.value
+                    return
+                }
+                newValue = this.formatNumber(newValue, this.decimals)
+                this.inputValue = newValue
+                this.$emit('input', newValue)
+            },
+
+            formatNumber(num, decimals) {
+                let regex = new RegExp('^-?\\d+(?:\.\\d{0,' + (decimals || -1) + '})?')
+                return Number(num.toString().match(regex)[0]).toFixed(decimals)
+            }
+        },
+
+        mounted() {
+            this.inputValue = this.value
+        }
+    }
+</script>
