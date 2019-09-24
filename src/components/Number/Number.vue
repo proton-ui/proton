@@ -6,22 +6,30 @@
             v-if="label"
             v-html="label">
         </label>
-
-        <input
-            class="form__control"
-            :class="{'font-mono': monospaced, 'form__error': hasError}"
-            :id="name"
-            :name="name"
-            type="number"
-            :steps="steps"
-            :placeholder="placeholder"
-            :readonly="readonly"
-            :disabled="disabled"
-            v-model="inputValue"
-            @blur="emitValue($event.target.value)"
-            :autocomplete="autocomplete"
-            :autofocus="autofocus"
-        >
+        <div class="flex">
+            <button class="button mr-1" @click.prevent="decrease">
+                <fa-icon icon="minus"></fa-icon> 
+            </button>
+            <input
+                class="form__control"
+                :class="{'font-mono': monospaced, 'form__error': hasError}"
+                :id="name"
+                :name="name"
+                type="number"
+                :steps="steps"
+                :placeholder="placeholder"
+                :readonly="readonly"
+                :disabled="disabled"
+                v-model="inputValue"
+                @blur="emitValue($event.target.value)"
+                :autocomplete="autocomplete"
+                :autofocus="autofocus"
+            >
+            <button class="button ml-2" @click.prevent="increase">
+                <fa-icon icon="plus"></fa-icon> 
+            </button>
+        </div>
+            
 
         <div class="form__control--meta" v-if="help || errorMessage">
             <div class="form__help">
@@ -113,6 +121,14 @@
             formatNumber(num, decimals) {
                 let regex = new RegExp('^-?\\d+(?:\.\\d{0,' + (decimals || -1) + '})?')
                 return Number(num.toString().match(regex)[0]).toFixed(decimals)
+            },
+
+            increase() {
+                this.emitValue((Number(this.value) + Number(this.steps)).toFixed(this.decimals))
+            },
+
+            decrease() {
+                this.emitValue((Number(this.value) - Number(this.steps)).toFixed(this.decimals))
             }
         },
 
