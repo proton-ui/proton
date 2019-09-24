@@ -91,7 +91,7 @@
             },
             steps: {
                 required: false,
-                type: Number,
+                type: [Number, String],
                 default: 1
             },
             decimals: {
@@ -109,12 +109,14 @@
 
         methods: {
             emitValue(newValue) {
+                console.log(newValue)
                 if(!newValue) {
                     this.inputValue = this.value
                     return
                 }
                 newValue = this.formatNumber(newValue, this.decimals)
                 this.inputValue = newValue
+                console.log(newValue)
                 this.$emit('input', newValue)
             },
 
@@ -124,11 +126,11 @@
             },
 
             increase() {
-                this.emitValue((Number(this.value) + Number(this.steps)).toFixed(this.decimals))
+                this.emitValue((Number(this.inputValue) + Number(this.steps)).toFixed(this.decimals))
             },
 
             decrease() {
-                this.emitValue((Number(this.value) - Number(this.steps)).toFixed(this.decimals))
+                this.emitValue((Number(this.inputValue) - Number(this.steps)).toFixed(this.decimals))
             }
         },
 
