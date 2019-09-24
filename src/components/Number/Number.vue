@@ -98,7 +98,7 @@
             },
             decimals: {
                 required: false,
-                type: String,
+                type: [String, Number],
                 default: 0
             },
             min: {
