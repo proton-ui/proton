@@ -50,7 +50,7 @@
             label: String,
             help: String,
             value: {
-                type: String,
+                type: [String, Number],
                 default: null,
             },
             required: {
