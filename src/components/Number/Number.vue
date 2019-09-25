@@ -125,17 +125,15 @@
 
         methods: {
             emitValue(newValue) {
-                if(!newValue) {
-                    this.inputValue = this.value
-                    return
-                }
-                if(this.min && newValue < this.min) {
-                    newValue = this.min
-                }
-                if(this.max && newValue > this.max) {
-                    newValue = this.max
-                }
-                newValue = this.formatNumber(newValue, this.decimals)
+                if(newValue) {
+                    if(this.min && newValue < this.min) {
+                        newValue = this.min
+                    }
+                    if(this.max && newValue > this.max) {
+                        newValue = this.max
+                    }
+                    newValue = this.formatNumber(newValue, this.decimals)
+                } 
                 this.inputValue = newValue
                 this.$emit('input', newValue)
             },
