@@ -6,9 +6,11 @@
             v-if="label"
             v-html="label">
         </label>
-        <div class="flex">
-            <button class="button mr-1" @click.prevent="decrease">
-                <fa-icon icon="minus"></fa-icon> 
+        <div class="form__number">
+            <button class="form__number-decrease" @click.prevent="decrease">
+                <slot name="decrease">
+                    -
+                </slot>
             </button>
             <input
                 class="form__control"
@@ -27,8 +29,10 @@
                 :min="min"
                 :max="max"
             >
-            <button class="button ml-2" @click.prevent="increase">
-                <fa-icon icon="plus"></fa-icon> 
+            <button class="form__number-increase" @click.prevent="increase">
+                <slot name="increase">
+                    +
+                </slot>
             </button>
         </div>
             
