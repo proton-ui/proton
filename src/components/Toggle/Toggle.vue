@@ -6,21 +6,23 @@
             v-if="label"
             v-html="label">
         </label>
-
-        <input
-            type="checkbox"
-            class="toggle"
-            :id="name"
-            :name="name"
-            :value="value"
-            :checked="isChecked"
-            :readonly="readonly"
-            :disabled="disabled"
-            :required="required"
-            @keydown.space="toggle"
-            @click="toggle"
-        >
-
+        
+        <span class="toggle__wrap" 
+            :class="[isChecked ? 'toggle__wrap--checked' : 'toggle__wrap--unchecked']">
+            <input
+                type="checkbox"
+                class="toggle"
+                :id="name"
+                :name="name"
+                :value="value"
+                :checked="isChecked"
+                :readonly="readonly"
+                :disabled="disabled"
+                :required="required"
+                @click="toggle"
+            >
+        </span>
+            
         <p
             class="form__help"
             v-if="help"
