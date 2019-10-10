@@ -73,7 +73,7 @@
 
         methods: {
             onClick(event) {
-                if (typeof this.to === 'undefined') { // is href
+                if (typeof this.to === 'undefined' && typeof this.href !== 'undefined') { // is href
                     event.preventDefault()
                     window.location = this.href
 
