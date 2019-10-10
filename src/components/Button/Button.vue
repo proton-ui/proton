@@ -4,7 +4,7 @@
         :class="[ themes[theme], sizes[size] ]"
         :type="type"
         :disabled="disabled"
-        @click="$emit('click', $event)"
+        @click="onClick($event)"
     >
         <slot></slot>
     </button>
@@ -70,5 +70,25 @@
                 default: false,
             },
         },
+
+        methods: {
+            onClick(event) {
+                if (typeof this.to === 'undefined' && typeof this.href !== 'undefined') { // is href
+                    event.preventDefault()
+                    window.location = this.href
+
+                } else if (typeof this.$router !== 'undefined') { // is router-link
+
+                    if (typeof this.to !== 'object' && this.to !== null) { // is string
+                        this.$router.push({ path: this.to })
+
+                    } else { // is object
+                        this.$router.push(this.to)
+                    }             
+                }
+
+                this.$emit('click', event)
+            }
+        }
     }
 </script>
