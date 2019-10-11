@@ -12046,6 +12046,15 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       this.$emit('input', this.value.filter(function (t) {
         return t !== tag;
       }));
+    },
+    onInput: function onInput(e) {
+      this.newTag = e.target.value;
+    },
+    onKeyDown: function onKeyDown(e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        this.addTag();
+      }
     }
   },
   render: function render() {
@@ -12056,6 +12065,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       available: this.available,
       addTag: this.addTag,
       removeTag: this.removeTag,
+      onInput: this.onInput,
+      onKeyDown: this.onKeyDown,
       inputAttrs: {
         value: this.newTag
       },

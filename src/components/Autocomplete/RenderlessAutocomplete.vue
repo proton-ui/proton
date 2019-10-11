@@ -93,7 +93,7 @@
                 },
 
                 inputEvents: {
-                    input: (e) => {                        
+                    input: (e) => {
                         this.search = e.target.value
 
                         this.open()

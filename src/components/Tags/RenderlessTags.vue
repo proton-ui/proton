@@ -23,6 +23,17 @@
             removeTag(tag) {
                 this.$emit('input', this.value.filter(t => t !== tag))
             },
+
+            onInput(e) {
+                this.newTag = e.target.value
+            },
+
+            onKeyDown(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault()
+                    this.addTag()
+                }
+            },
         },
 
         render() {
@@ -31,6 +42,8 @@
                 available: this.available,
                 addTag: this.addTag,
                 removeTag: this.removeTag,
+                onInput: this.onInput,
+                onKeyDown: this.onKeyDown,
                 
                 inputAttrs: {
                     value: this.newTag,
