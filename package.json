@@ -1,11 +1,20 @@
 {
-  "name": "@efelle/proton",
-  "version": "1.0.0-beta.15",
-  "description": "An elegant Vue.js Tailwind component library",
+  "name": "@proton-ui/proton",
+  "version": "0.1.0",
+  "description": "A collection of renderless UI components for Vue.js.",
   "main": "dist/proton.js",
-  "repository": "git@github.com:efellemedia/proton.git",
-  "author": "efelle creative <hello@efelle.com>",
-  "homepage": "https://proton.efelle.co/",
+  "repository": "git@github.com:proton-ui/proton.git",
+  "author": {
+    "name": "Shea 'Kai' Lewis",
+    "url": "https://kaidesu.com/"
+  },
+  "contributors": [
+    {
+      "name": "Cameron Van Orman",
+      "url": "https://vanorman.co/"
+    }
+  ],
+  "homepage": "https://proton-ui.com",
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -22,7 +31,8 @@
     "tailwind",
     "components",
     "tailwindcss",
-    "vue-tailwind"
+    "vue-tailwind",
+    "renderless"
   ],
   "devDependencies": {
     "@shopify/draggable": "^1.0.0-beta.8",
