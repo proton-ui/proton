@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://proton-ui.com/" target="_blank">
-        <img src="https://proton-ui.com/proton-logo.svg" width="280" alt="logo">
+        <img src="https://proton-ui.com/proton-logo.svg" width="75" alt="logo">
     </a>
 </p>
 
