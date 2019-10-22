@@ -20,13 +20,13 @@
                 @keydown.up.prevent="highlightPrevious"
                 @keydown.enter.prevent="selectHighlighted"
             >
-                <span v-if="selected !== null" v-html="selected.label || selected"></span>
+                <span v-if="selected.length" v-html="selected.label || selected"></span>
                 <span v-else class="form__select-placeholder" v-html="placeholder"></span>
-            </button>
 
-            <div class="form__select-arrow">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-            </div>
+                <div class="form__select-arrow">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </button>
 
             <div v-show="isOpen" class="form__select-dropdown" ref="dropdown">
                 <input
