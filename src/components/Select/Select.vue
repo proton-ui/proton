@@ -20,7 +20,7 @@
                 @keydown.up.prevent="highlightPrevious"
                 @keydown.enter.prevent="selectHighlighted"
             >
-                <span v-if="selected && selected.length" v-html="selected.label || selected"></span>
+                <span v-if="null !== selected" v-html="selected.label || selected"></span>
                 <span v-else class="form__select-placeholder" v-html="placeholder"></span>
 
                 <div class="form__select-arrow">
