@@ -1,6 +1,6 @@
 {
   "name": "@proton-ui/proton",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A collection of renderless UI components for Vue.js.",
   "main": "dist/proton.js",
   "repository": "git@github.com:proton-ui/proton.git",
@@ -49,5 +49,8 @@
     "tooltip.js": "^1.3.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "lozad": "^1.14.0"
   }
 }
