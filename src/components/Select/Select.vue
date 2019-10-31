@@ -85,7 +85,7 @@
                 isOpen: false,
                 search: '',
                 highlighted: 0,
-                model: this.value
+                model: this.value,
             }
         },
 
@@ -177,16 +177,18 @@
                         return this.model
                     }
 
-                    if (typeof _.head(this.options) === 'object') {                        
+                    if (typeof _.head(this.options) === 'object') {
                         let index = _.findIndex(this.options, (option) => {
                             if (typeof this.model === 'object') {
                                 return option.value === this.model.value
-                            } else {
-                                return option.value === this.model
                             }
-                            
-                            // return option.value === (this.model.value || this.model)
+
+                            return option.value === this.model
                         })
+
+                        if (index === -1) {
+                            return null
+                        }
 
                         return this.options[index]
                     }
