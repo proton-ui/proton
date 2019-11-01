@@ -7,6 +7,8 @@
             v-html="label">
         </label>
 
+        <input type="hidden" :value="value" :name="name">
+
         <div class="form__select" :class="{'form__select--open': isOpen, 'form__select--dark': dark}" v-click-outside="close">
             <button
                 @click="toggle"
