@@ -74,21 +74,16 @@
         methods: {
             onClick(event) {
                 if (typeof this.to === 'undefined' && typeof this.href !== 'undefined') { // is href
-console.log('1')
                     event.preventDefault()
                     window.location = this.href
 
                 } else if (typeof this.to !== 'undefined' && typeof this.$router !== 'undefined') { // is router-link
-console.log('2')
-console.log(this.$router)
 
                     if (typeof this.to !== 'object' && this.to !== null) { // is string
-console.log('3')
 
                         this.$router.push({ path: this.to })
 
                     } else { // is object
-console.log('4')
 
                         this.$router.push(this.to)
                     }             
