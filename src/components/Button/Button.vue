@@ -77,12 +77,14 @@
                     event.preventDefault()
                     window.location = this.href
 
-                } else if (typeof this.$router !== 'undefined') { // is router-link
+                } else if (typeof this.to !== 'undefined' && typeof this.$router !== 'undefined') { // is router-link
 
                     if (typeof this.to !== 'object' && this.to !== null) { // is string
+
                         this.$router.push({ path: this.to })
 
                     } else { // is object
+
                         this.$router.push(this.to)
                     }             
                 }
