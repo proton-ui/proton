@@ -1,6 +1,6 @@
 {
   "name": "@proton-ui/proton",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A collection of renderless UI components for Vue.js.",
   "main": "dist/proton.js",
   "repository": "git@github.com:proton-ui/proton.git",
