@@ -1,19 +1,22 @@
 <template>
     <div class="form__radio-container">
-        <label :for="id">
+        <label
+            ref="label"
+            :disabled="disabled"
+            :tabindex="disabled ? false : 0"
+            @keydown.prevent.enter.space="$refs.label.click()">
             <input
                 class="form__radio"
                 type="radio"
-                :id="id"
                 :name="name"
-                :value="value"
-                @change="onChange"
-                :checked="state"
-                :readonly="readonly"
                 :disabled="disabled"
+                :required="required"
+                :indeterminate.prop="indeterminate"
+                :value="nativeValue"
+                v-model="checked"
+                @change="onChange"
             >
-            
-            <slot></slot>
+            <span class="form__radio-label"><slot></slot></span>
         </label>
     </div>
 </template>
@@ -22,9 +25,10 @@
     export default {
         name: 'p-radio',
 
-        model: {
-            prop: 'modelValue',
-            event: 'input',
+        data() {
+            return {
+                model: false,
+            }
         },
 
         props: {
@@ -33,69 +37,56 @@
                 type: String,
             },
 
-            id: {
-                required: true,
-                type: String,
-            },
-
             value: {
                 required: false,
-                type: String,
-                default: '',
+                type: [String, Number, Boolean, Function, Object, Array, Symbol],
             },
 
-            modelValue: {
-                default: undefined,
-            },
-
-            checked: {
-                required: false,
-                type: Boolean,
-                default: false,
-            },
-
-            readonly: {
-                type: Boolean,
-                default: false,
+            nativeValue: {
+                type: [String, Number, Boolean, Function, Object, Array, Symbol]
             },
 
             disabled: {
                 type: Boolean,
                 default: false,
             },
+
+            required: {
+                type: Boolean,
+                default: false,
+            },
+
+            indeterminate: {
+                type: Boolean,
+                default: false,
+            },
+
+            trueValue: {
+                type: [String, Number, Boolean, Function, Object, Array, Symbol],
+                default: true
+            },
+
+            falseValue: {
+                type: [String, Number, Boolean, Function, Object, Array, Symbol],
+                default: false
+            },
         },
 
         computed: {
-            state() {
-                if (this.modelValue === undefined) {
-                    return this.checked
-                }
+            checked: {
+                get() {
+                    return this.value
+                },
 
-                return this.modelValue === this.value
+                set(value) {
+                    this.model = value
+                }
             }
         },
 
         methods: {
             onChange() {
-                this.toggle()
-            },
-
-            toggle() {
-                this.$emit('input', this.value)
-            },
-        },
-
-        watch: {
-            checked(value) {
-                if (value !== this.state) {
-                    this.toggle()
-                }
-            },
-        },
-
-        mounted() {
-            if (this.checked && ! this.state) {
-                this.toggle()
+                this.$emit('input', this.model)
             }
         }
     }

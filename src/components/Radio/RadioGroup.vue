@@ -7,7 +7,7 @@
             v-html="label">
         </label>
 
-        <div :class="{'form__radio-group--inline': inline}">
+        <div class="form__radio-group--block" :class="{'form__radio-group--inline': inline}">
             <slot></slot>
         </div>
 
