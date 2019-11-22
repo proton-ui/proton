@@ -26,6 +26,13 @@
     export default {
         name: 'p-tabs',
 
+        props: {
+            replace: {
+                type: Boolean,
+                default: false,
+            },
+        },
+
         data() {
             return {
                 tabs: null,
@@ -79,7 +86,7 @@
                 })
             },
 
-            selectTab(hash, replaceHash = false) {
+            selectTab(hash) {
                 const selected = this.findTab(hash)
 
                 if (typeof selected === 'undefined') {
@@ -96,10 +103,10 @@
                     }
                 })
 
-                if (replaceHash) {
+                if (this.replace) {
                     this.$router.replace({
                         hash: selected.hash
-                    })
+                    }).catch((err) => {})
                 }
             },
 

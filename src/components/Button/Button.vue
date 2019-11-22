@@ -76,16 +76,15 @@
                 if (typeof this.to === 'undefined' && typeof this.href !== 'undefined') { // is href
                     event.preventDefault()
                     window.location = this.href
-
                 } else if (typeof this.to !== 'undefined' && typeof this.$router !== 'undefined') { // is router-link
 
                     if (typeof this.to !== 'object' && this.to !== null) { // is string
 
-                        this.$router.push({ path: this.to })
+                        this.$router.push({ path: this.to }).catch((err) => {})
 
                     } else { // is object
 
-                        this.$router.push(this.to)
+                        this.$router.push(this.to).catch((err) => {})
                     }             
                 }
 
