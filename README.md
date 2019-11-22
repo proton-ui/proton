@@ -10,7 +10,7 @@
 
 An elegant collection of renderless Vue.js UI components. Don't be constrained by underlying CSS frameworks. Proton provides the functionality, leaving you to roll your own styles or make use of utility-first CSS frameworks, such as [Tailwind](https://tailwindcss.com/), to fit your project and needs.
 
-The majority of components found within Proton currently are _not_ renderless. We're in the (slow) process to converting these over as renderless components while supporting the current tailwind-specific components we have. Eventually, the tailwind-specific components that consume the renderless components will be moved to their own repository/package to be pulled in as needed for your projects.
+The majority of components found within Proton currently are _not_ renderless. We're in the (slow) process converting these over as renderless components while supporting the current tailwind-specific components we have. Eventually, the tailwind-specific components that consume the renderless components will be moved to their own repository/package to be pulled in as needed for your projects.
 
 ## License
 [MIT](/LICENSE)
